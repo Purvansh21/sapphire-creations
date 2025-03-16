@@ -1,0 +1,120 @@
+
+import React, { useEffect, useRef, useState } from 'react';
+import { FadeIn } from '@/components/animations/FadeIn';
+import { useParallaxEffect } from '@/hooks/use-animation';
+import { cn } from '@/lib/utils';
+import { MousePointer } from 'lucide-react';
+
+interface HeroSectionProps {
+  className?: string;
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
+  const parallaxOffset = useParallaxEffect(0.05);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      
+      const scrollPosition = window.scrollY;
+      const heroHeight = heroRef.current.offsetHeight;
+      const progress = Math.min(scrollPosition / heroHeight, 1);
+      
+      setScrollProgress(progress);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Generate particles for the background
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 8 + 2,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    animationDelay: Math.random() * 5,
+    animationDuration: Math.random() * 10 + 10,
+  }));
+
+  return (
+    <div 
+      ref={heroRef}
+      className={cn(
+        "relative min-h-screen flex items-center justify-center overflow-hidden",
+        className
+      )}
+    >
+      {/* Particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute rounded-full bg-white/10 animate-float"
+            style={{
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              animationDelay: `${particle.animationDelay}s`,
+              animationDuration: `${particle.animationDuration}s`,
+              opacity: 0.4 - (scrollProgress * 0.4),
+              transform: `translateY(${scrollProgress * 100}px)`,
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* 3D Element */}
+      <div 
+        className="absolute w-[600px] h-[600px] pointer-events-none opacity-70"
+        style={{
+          transform: `translate3d(${parallaxOffset.x * 0.5}px, ${parallaxOffset.y * 0.5}px, 0) rotateX(${parallaxOffset.y * 0.05}deg) rotateY(${-parallaxOffset.x * 0.05}deg)`,
+          opacity: 1 - scrollProgress,
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-xl animate-pulse-soft"></div>
+        <div className="absolute inset-10 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-lg"></div>
+        <div className="absolute inset-20 bg-gradient-to-tr from-cyan-300/20 to-blue-300/20 rounded-full blur-md"></div>
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 px-6 text-center max-w-5xl" style={{ opacity: 1 - scrollProgress }}>
+        <FadeIn delay={300} duration={800} className="mb-2">
+          <div className="inline-block px-4 py-1 mb-4 text-sm font-medium bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white">
+            Introducing the Next Generation
+          </div>
+        </FadeIn>
+        
+        <FadeIn delay={500} duration={1000}>
+          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tight text-white">
+            Reimagine What's Possible
+          </h1>
+        </FadeIn>
+        
+        <FadeIn delay={700} duration={1000} direction="up" distance={30}>
+          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            Experience a breakthrough product that seamlessly integrates into your life, 
+            delivering unparalleled performance with thoughtful, intuitive design.
+          </p>
+        </FadeIn>
+        
+        <FadeIn delay={900} duration={1000}>
+          <button className="px-8 py-4 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 border border-white/30 hover:border-white/50">
+            Discover More
+          </button>
+        </FadeIn>
+
+        <FadeIn delay={1200} duration={1000} className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
+          <p className="mb-2 text-sm">Scroll to explore</p>
+          <MousePointer className="animate-bounce h-5 w-5" />
+        </FadeIn>
+      </div>
+    </div>
+  );
+};
