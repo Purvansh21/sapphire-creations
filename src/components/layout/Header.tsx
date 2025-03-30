@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
+import { Logo } from '@/components/ui/logo';
 
 interface HeaderProps {
   className?: string;
@@ -34,14 +35,12 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center">
           <a href="#" className="text-2xl font-display font-bold text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-              Orbital
-            </span>
+            <Logo size="md" variant={isScrolled ? 'minimal' : 'default'} />
           </a>
         </div>
 
         <nav className="hidden md:flex items-center space-x-8">
-          {["Features", "Benefits", "Testimonials", "Pricing"].map((item) => (
+          {["About", "Services", "Portfolio", "Process", "Testimonials", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -54,10 +53,10 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
 
         <div className="hidden md:flex items-center space-x-4">
           <button className="px-4 py-2 text-white/90 hover:text-white transition-colors text-sm font-medium">
-            Sign In
+            Get Quote
           </button>
           <button className="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white rounded-full text-sm font-medium transition-all duration-200">
-            Get Started
+            Contact Us
           </button>
         </div>
 
@@ -77,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
         )}
       >
         <nav className="flex flex-col items-center space-y-6 p-6">
-          {["Features", "Benefits", "Testimonials", "Pricing"].map((item) => (
+          {["About", "Services", "Portfolio", "Process", "Testimonials", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -89,10 +88,10 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
           ))}
           <div className="pt-6 flex flex-col space-y-4 w-full">
             <button className="px-4 py-3 text-white/90 hover:text-white transition-colors text-lg font-medium border border-white/20 rounded-lg">
-              Sign In
+              Get Quote
             </button>
-            <button className="px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg text-lg font-medium transition-all duration-200">
-              Get Started
+            <button className="px-4 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg text-lg font-medium transition-all duration-200">
+              Contact Us
             </button>
           </div>
         </nav>

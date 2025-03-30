@@ -8,6 +8,8 @@ import { FeatureShowcase } from '@/components/sections/FeatureShowcase';
 import { BenefitsSection } from '@/components/sections/BenefitsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CTASection } from '@/components/sections/CallToAction';
+import { PortfolioSection } from '@/components/sections/PortfolioSection';
+import { ProcessSection } from '@/components/sections/ProcessSection';
 
 const Index = () => {
   useEffect(() => {
@@ -41,11 +43,13 @@ const Index = () => {
       
       <main>
         <HeroSection />
-        <ProductIntro id="features" />
-        <FeatureShowcase />
+        <ProductIntro id="about" />
+        <FeatureShowcase id="services" />
+        <PortfolioSection id="portfolio" />
+        <ProcessSection id="process" />
         <BenefitsSection id="benefits" />
         <TestimonialsSection id="testimonials" />
-        <CTASection id="pricing" />
+        <CTASection id="contact" />
       </main>
       
       <Footer />
