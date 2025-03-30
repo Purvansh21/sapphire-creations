@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
   const footerLinks = [
     {
       title: "Services",
-      links: ["Brand Design", "Social Media", "Video Production", "Print Design", "Digital Design"]
+      links: ["Digital Marketing", "Business Marketing", "Social Media", "Search Marketing", "Content Marketing"]
     },
     {
       title: "Company",
@@ -36,15 +36,15 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          <FadeIn className="md:col-span-2">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <FadeIn className="col-span-2">
             <div>
               <a href="#" className="inline-block mb-4">
                 <Logo size="md" />
               </a>
               <p className="text-white/70 mb-6 max-w-md text-sm">
-                Sapphire Creations is a full-service graphic design agency specializing in brand identity,
-                social media content, and digital marketing materials. We help brands stand out in today's
+                Sapphire Creations is a full-service marketing and design agency specializing in brand identity,
+                digital marketing, and creative content development to help brands stand out in today's
                 competitive market.
               </p>
               <div className="flex space-x-4">

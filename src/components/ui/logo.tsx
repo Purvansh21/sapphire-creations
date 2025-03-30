@@ -14,9 +14,9 @@ export const Logo: React.FC<LogoProps> = ({
   variant = 'default'
 }) => {
   const sizes = {
-    sm: 'text-sm md:text-base',
-    md: 'text-base md:text-lg',
-    lg: 'text-lg md:text-2xl'
+    sm: 'text-xs md:text-sm',
+    md: 'text-sm md:text-base',
+    lg: 'text-base md:text-lg'
   };
 
   return (
@@ -32,10 +32,10 @@ export const Logo: React.FC<LogoProps> = ({
       )}
       
       <div className="flex flex-col items-center">
-        <span className="text-white bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400">
           Sapphire
         </span>
-        <span className="text-white text-opacity-80 -mt-1 text-xs md:text-sm">
+        <span className="text-white text-opacity-80 -mt-1 text-[0.65em]">
           creations
         </span>
         

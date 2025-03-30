@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { cn } from '@/lib/utils';
 
@@ -18,30 +18,52 @@ interface TestimonialsSectionProps {
 
 export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ className, id }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      quote: "This product has completely transformed how I work. The intuitive interface and powerful features have made my daily tasks so much more efficient.",
+      quote: "Sapphire Creations completely transformed our brand identity. Their attention to detail and creative approach helped us stand out in a crowded market.",
       author: "Alex Morgan",
-      role: "Product Designer",
-      company: "Design Studios"
+      role: "Marketing Director",
+      company: "TechSolutions Inc."
     },
     {
       id: 2,
-      quote: "I've tried many similar products, but none compare to the seamless experience this one provides. It's become an essential part of my workflow.",
+      quote: "Working with Sapphire has been a game-changer for our digital marketing strategy. Their team delivered exceptional results that exceeded our expectations.",
       author: "Jamie Chen",
-      role: "Creative Director",
-      company: "Innovative Co."
+      role: "CEO",
+      company: "Innovative Media"
     },
     {
       id: 3,
-      quote: "The attention to detail in this product is remarkable. Every feature feels purposeful and well-crafted, making it a joy to use every day.",
+      quote: "The website design and logo created by Sapphire Creations perfectly captured our brand essence. We've received countless compliments from our clients.",
       author: "Taylor Wilson",
-      role: "Senior Developer",
-      company: "Tech Solutions"
+      role: "Brand Manager",
+      company: "Wilson Enterprises"
     }
   ];
+
+  useEffect(() => {
+    // Auto-rotate testimonials
+    const interval = setInterval(() => {
+      changeTestimonial((activeIndex + 1) % testimonials.length);
+    }, 8000);
+    
+    return () => clearInterval(interval);
+  }, [activeIndex, testimonials.length]);
+  
+  const changeTestimonial = (index: number) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveIndex(index);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 800);
+    }, 400);
+  };
 
   return (
     <div id={id} className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-blue-950 to-black relative overflow-hidden", className)}>
@@ -62,22 +84,28 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
           </FadeIn>
           <FadeIn direction="up" delay={400}>
             <p className="text-lg text-white/70 max-w-3xl mx-auto">
-              Hear from professionals who have experienced the transformative impact of our product firsthand.
+              Hear from professionals who have experienced the transformative impact of our services firsthand.
             </p>
           </FadeIn>
         </div>
         
-        <div className="relative">
-          <div className="mb-12 overflow-hidden">
+        <div className="relative mb-12">
+          <div className="overflow-hidden relative h-[320px] md:h-[300px]">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={testimonial.id}
                 className={cn(
-                  "transition-all duration-500 ease-in-out",
+                  "absolute inset-0 transition-all duration-800 ease-in-out",
                   activeIndex === index 
-                    ? "opacity-100 transform translate-y-0" 
-                    : "opacity-0 absolute transform -translate-y-8 pointer-events-none"
+                    ? "opacity-100 transform translate-y-0 scale-100" 
+                    : isTransitioning
+                      ? "opacity-0 transform -translate-y-8 scale-95"
+                      : "opacity-0 transform translate-y-8 scale-95 pointer-events-none"
                 )}
+                style={{
+                  transitionDuration: '800ms',
+                  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
               >
                 <FadeIn>
                   <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-12">
@@ -112,16 +140,19 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
             ))}
           </div>
           
-          <div className="flex justify-center space-x-2">
+          <div className="flex justify-center space-x-3 mt-6">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 className={cn(
-                  "w-3 h-3 rounded-full transition-colors duration-300",
-                  activeIndex === index ? "bg-white" : "bg-white/30 hover:bg-white/50"
+                  "w-3 h-3 rounded-full transition-colors duration-500",
+                  activeIndex === index 
+                    ? "bg-blue-400" 
+                    : "bg-white/30 hover:bg-white/50"
                 )}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => changeTestimonial(index)}
                 aria-label={`View testimonial ${index + 1}`}
+                disabled={isTransitioning}
               />
             ))}
           </div>

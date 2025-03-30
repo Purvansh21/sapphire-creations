@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Parallax } from '@/components/animations/Parallax';
 import { cn } from '@/lib/utils';
-import { Check, ArrowRight, PenTool, Image, Layout, MessageSquare, Video, Palette } from 'lucide-react';
+import { PenTool, Image, Layout, MessageSquare, Video, Palette, Target, Megaphone, Globe, Activity } from 'lucide-react';
 
 interface Service {
   id: number;
@@ -23,45 +23,109 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
   const services: Service[] = [
     {
       id: 1,
-      title: "Brand Design",
-      description: "Complete brand identity development including logos, color palettes, typography, and brand guidelines.",
+      title: "Digital Marketing",
+      description: "Strategic online marketing campaigns to boost your brand's digital presence and engagement.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
-          <PenTool className="h-5 w-5 text-white" />
+          <Target className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 2,
-      title: "Social Media Content",
-      description: "Engaging social media posts, stories, and campaigns designed to increase your brand visibility and engagement.",
+      title: "Business Marketing",
+      description: "Comprehensive marketing strategies designed to grow your business and increase revenue.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600 flex items-center justify-center">
-          <MessageSquare className="h-5 w-5 text-white" />
+          <Activity className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 3,
-      title: "Video Production",
-      description: "Professional promotional videos, motion graphics, and animations to showcase your products and services.",
+      title: "Social Media Marketing",
+      description: "Engaging social media campaigns that build your brand's online community and drive engagement.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 to-indigo-600 flex items-center justify-center">
-          <Video className="h-5 w-5 text-white" />
+          <MessageSquare className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 4,
-      title: "Print & Digital Design",
-      description: "Custom poster designs, marketing materials, digital ads, and promotional graphics that capture attention.",
+      title: "Search Marketing",
+      description: "SEO and SEM strategies to improve your visibility in search engines and drive qualified traffic.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center">
+          <Globe className="h-5 w-5 text-white" />
+        </div>
+      )
+    },
+    {
+      id: 5,
+      title: "Content Marketing",
+      description: "Strategic content creation that tells your brand story and connects with your target audience.",
+      icon: (
+        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+          <PenTool className="h-5 w-5 text-white" />
+        </div>
+      )
+    },
+    {
+      id: 6,
+      title: "Direct Marketing",
+      description: "Targeted campaigns that connect directly with your customers for immediate response and action.",
+      icon: (
+        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center">
+          <Megaphone className="h-5 w-5 text-white" />
+        </div>
+      )
+    },
+    {
+      id: 7,
+      title: "Advertising & Promotions",
+      description: "Creative ad campaigns and promotional strategies that capture attention and drive conversions.",
+      icon: (
+        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center">
           <Image className="h-5 w-5 text-white" />
+        </div>
+      )
+    },
+    {
+      id: 8,
+      title: "Website Design",
+      description: "Custom, responsive website design that represents your brand and delivers exceptional user experience.",
+      icon: (
+        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
+          <Layout className="h-5 w-5 text-white" />
+        </div>
+      )
+    },
+    {
+      id: 9,
+      title: "Graphics Design",
+      description: "Professional visual design solutions that communicate your brand message effectively.",
+      icon: (
+        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-blue-500 flex items-center justify-center">
+          <Palette className="h-5 w-5 text-white" />
+        </div>
+      )
+    },
+    {
+      id: 10,
+      title: "Logo Design",
+      description: "Distinctive logo creation that embodies your brand identity and makes a lasting impression.",
+      icon: (
+        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 flex items-center justify-center">
+          <PenTool className="h-5 w-5 text-white" />
         </div>
       )
     }
   ];
+
+  // Divide services into two columns for better display
+  const servicesFirstHalf = services.slice(0, 5);
+  const servicesSecondHalf = services.slice(5);
 
   return (
     <div id={id} className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-black to-blue-950", className)}>
@@ -79,7 +143,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
           </FadeIn>
           <FadeIn direction="up" delay={400}>
             <p className="text-lg text-white/70 max-w-3xl mx-auto">
-              We provide a comprehensive range of graphic design and digital content services 
+              We provide a comprehensive range of marketing, design, and digital content services 
               to help your brand stand out in today's competitive market.
             </p>
           </FadeIn>
@@ -100,10 +164,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
                     <div className="p-8 text-center">
                       <div className="w-32 h-32 rounded-full mx-auto mb-6 flex items-center justify-center bg-gradient-to-br from-blue-900/50 to-indigo-900/50 backdrop-blur-xl border border-white/10">
                         <div className="w-24 h-24 rounded-full bg-gradient-to-r from-blue-400 to-indigo-400 flex items-center justify-center">
-                          {service.id === 1 && <PenTool className="h-10 w-10 text-white" />}
-                          {service.id === 2 && <MessageSquare className="h-10 w-10 text-white" />}
-                          {service.id === 3 && <Video className="h-10 w-10 text-white" />}
-                          {service.id === 4 && <Palette className="h-10 w-10 text-white" />}
+                          {service.icon.props.children}
                         </div>
                       </div>
                       <h3 className="text-3xl font-display font-bold text-white mb-4">
@@ -112,37 +173,6 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
                       <p className="text-white/70 max-w-md mx-auto text-lg">
                         {service.description}
                       </p>
-                      
-                      <div className="mt-8 flex flex-wrap justify-center gap-3">
-                        {service.id === 1 && (
-                          ["Logo Design", "Brand Guidelines", "Visual Identity"].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full bg-white/10 text-white/80 text-sm">
-                              {tag}
-                            </span>
-                          ))
-                        )}
-                        {service.id === 2 && (
-                          ["Content Creation", "Community Management", "Growth Strategy"].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full bg-white/10 text-white/80 text-sm">
-                              {tag}
-                            </span>
-                          ))
-                        )}
-                        {service.id === 3 && (
-                          ["Promo Videos", "Motion Graphics", "Editing"].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full bg-white/10 text-white/80 text-sm">
-                              {tag}
-                            </span>
-                          ))
-                        )}
-                        {service.id === 4 && (
-                          ["Posters", "Marketing Materials", "Ads"].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full bg-white/10 text-white/80 text-sm">
-                              {tag}
-                            </span>
-                          ))
-                        )}
-                      </div>
                     </div>
                   </div>
                 ))}
@@ -150,41 +180,66 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
             </Parallax>
           </div>
           
-          <div className="space-y-6">
-            {services.map((service) => (
-              <FadeIn key={service.id} direction="left" delay={service.id * 100}>
-                <div 
-                  className={cn(
-                    "p-6 rounded-xl cursor-pointer transition-all duration-300",
-                    activeService === service.id 
-                      ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transform scale-105" 
-                      : "hover:bg-white/5 border border-transparent"
-                  )}
-                  onClick={() => setActiveService(service.id)}
-                >
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mr-4">
-                      {service.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-display font-semibold text-white mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-white/70">
-                        {service.description}
-                      </p>
-                      
-                      {activeService === service.id && (
-                        <div className="mt-4 flex items-center text-blue-400 font-medium">
-                          <span>View service details</span>
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </div>
-                      )}
+          <div className="space-y-2 md:space-y-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+              {servicesFirstHalf.map((service) => (
+                <FadeIn key={service.id} direction="left" delay={service.id * 50}>
+                  <div 
+                    className={cn(
+                      "p-4 rounded-xl cursor-pointer transition-all duration-300",
+                      activeService === service.id 
+                        ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transform scale-105" 
+                        : "hover:bg-white/5 border border-transparent"
+                    )}
+                    onClick={() => setActiveService(service.id)}
+                  >
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-3">
+                        {service.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1">
+                          {service.title}
+                        </h3>
+                        <p className="text-white/70 text-sm">
+                          {service.description.substring(0, 60)}...
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              ))}
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+              {servicesSecondHalf.map((service) => (
+                <FadeIn key={service.id} direction="left" delay={(service.id - 5) * 50}>
+                  <div 
+                    className={cn(
+                      "p-4 rounded-xl cursor-pointer transition-all duration-300",
+                      activeService === service.id 
+                        ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transform scale-105" 
+                        : "hover:bg-white/5 border border-transparent"
+                    )}
+                    onClick={() => setActiveService(service.id)}
+                  >
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-3">
+                        {service.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1">
+                          {service.title}
+                        </h3>
+                        <p className="text-white/70 text-sm">
+                          {service.description.substring(0, 60)}...
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
 
             <FadeIn delay={500}>
               <div className="mt-8 p-6 rounded-xl border border-white/10 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-sm">
@@ -193,7 +248,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
                   <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-sm rounded-full">Limited Time</div>
                 </div>
                 <p className="text-white/70 mt-2 mb-4">
-                  Get a complete brand package including logo design, promotional video, and custom poster design - FREE for a limited time!
+                  Get a complete marketing package including logo design, website, and social media strategy - 25% OFF for a limited time!
                 </p>
                 <button className="w-full py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors border border-white/20">
                   Learn More
