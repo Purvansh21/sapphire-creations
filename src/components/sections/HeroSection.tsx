@@ -122,7 +122,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
           </div>
         </FadeIn>
 
-        <FadeIn delay={1200} duration={1000} className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70">
+        {/* Fixed spacing for scroll indicator to prevent overlap */}
+        <div className="w-full h-20 mt-12"></div>
+        
+        <FadeIn delay={1200} duration={1000} className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70" style={{ bottom: "5rem" }}>
           <p className="mb-2 text-sm">Scroll to explore</p>
           <MousePointer className="animate-bounce h-5 w-5" />
         </FadeIn>

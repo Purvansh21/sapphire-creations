@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { cn } from '@/lib/utils';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Meteors } from '@/components/ui/meteors';
 
 interface Testimonial {
   id: number;
@@ -90,25 +92,25 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
         </div>
         
         <div className="relative mb-12">
-          <div className="overflow-hidden relative h-[320px] md:h-[300px]">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={testimonial.id}
-                className={cn(
-                  "absolute inset-0 transition-all duration-800 ease-in-out",
-                  activeIndex === index 
-                    ? "opacity-100 transform translate-y-0 scale-100" 
-                    : isTransitioning
-                      ? "opacity-0 transform -translate-y-8 scale-95"
-                      : "opacity-0 transform translate-y-8 scale-95 pointer-events-none"
-                )}
-                style={{
-                  transitionDuration: '800ms',
-                  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
-                }}
-              >
-                <FadeIn>
-                  <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-12">
+          <ScrollArea className="overflow-hidden relative h-[300px] md:h-[300px]">
+            <div className="relative shadow-xl bg-gray-900/40 border border-gray-800 rounded-2xl overflow-hidden">
+              {testimonials.map((testimonial, index) => (
+                <div 
+                  key={testimonial.id}
+                  className={cn(
+                    "absolute inset-0 transition-all duration-800 ease-in-out p-8 md:p-12",
+                    activeIndex === index 
+                      ? "opacity-100 transform translate-y-0 scale-100" 
+                      : isTransitioning
+                        ? "opacity-0 transform -translate-y-8 scale-95"
+                        : "opacity-0 transform translate-y-8 scale-95 pointer-events-none"
+                  )}
+                  style={{
+                    transitionDuration: '800ms',
+                    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}
+                >
+                  <FadeIn>
                     <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                       <div className="flex-shrink-0">
                         <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 backdrop-blur-md border border-white/20 flex items-center justify-center">
@@ -117,7 +119,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
                           </div>
                         </div>
                       </div>
-                      <div>
+                      <div className="relative z-10">
                         <svg className="h-8 w-8 text-blue-400 mb-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
@@ -134,11 +136,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
                         </div>
                       </div>
                     </div>
-                  </div>
-                </FadeIn>
-              </div>
-            ))}
-          </div>
+                  </FadeIn>
+                </div>
+              ))}
+              
+              {/* Meteors effect */}
+              <Meteors number={15} className="opacity-70" />
+            </div>
+          </ScrollArea>
           
           <div className="flex justify-center space-x-3 mt-6">
             {testimonials.map((_, index) => (

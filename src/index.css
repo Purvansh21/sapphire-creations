@@ -200,3 +200,22 @@
 .sapphire-glow {
   box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
 }
+
+/* Meteor animation */
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.animate-meteor-effect {
+  animation: meteor linear forwards;
+}
