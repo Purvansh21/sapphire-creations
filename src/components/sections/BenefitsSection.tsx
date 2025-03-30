@@ -15,9 +15,10 @@ interface Benefit {
 
 interface BenefitsSectionProps {
   className?: string;
+  id?: string;
 }
 
-export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className }) => {
+export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id }) => {
   const benefits: Benefit[] = [
     {
       id: 1,
@@ -46,7 +47,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className }) =
   ];
 
   return (
-    <div className={cn("py-24 px-6 md:px-10 bg-blue-950 relative overflow-hidden", className)}>
+    <div id={id} className={cn("py-24 px-6 md:px-10 bg-blue-950 relative overflow-hidden", className)}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-t from-blue-950 to-black/90 z-0"></div>
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-2xl rounded-full transform -translate-x-1/3 translate-y-1/4"></div>

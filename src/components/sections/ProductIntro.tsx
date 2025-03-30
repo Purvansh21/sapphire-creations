@@ -6,11 +6,12 @@ import { cn } from '@/lib/utils';
 
 interface ProductIntroProps {
   className?: string;
+  id?: string;
 }
 
-export const ProductIntro: React.FC<ProductIntroProps> = ({ className }) => {
+export const ProductIntro: React.FC<ProductIntroProps> = ({ className, id }) => {
   return (
-    <div className={cn("py-24 px-6 md:px-10 relative overflow-hidden bg-black", className)}>
+    <div id={id} className={cn("py-24 px-6 md:px-10 relative overflow-hidden bg-black", className)}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20 z-0"></div>
       <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-gradient-to-b from-blue-500/10 to-purple-500/5 blur-2xl rounded-full transform translate-x-1/3 -translate-y-1/3"></div>

@@ -13,9 +13,10 @@ interface Testimonial {
 
 interface TestimonialsSectionProps {
   className?: string;
+  id?: string;
 }
 
-export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ className }) => {
+export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ className, id }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   
   const testimonials: Testimonial[] = [
@@ -43,7 +44,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
   ];
 
   return (
-    <div className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-blue-950 to-black relative overflow-hidden", className)}>
+    <div id={id} className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-blue-950 to-black relative overflow-hidden", className)}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-950/50 to-black z-0"></div>
       

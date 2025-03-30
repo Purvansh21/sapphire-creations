@@ -6,11 +6,12 @@ import { ArrowRight } from 'lucide-react';
 
 interface CTASectionProps {
   className?: string;
+  id?: string;
 }
 
-export const CTASection: React.FC<CTASectionProps> = ({ className }) => {
+export const CTASection: React.FC<CTASectionProps> = ({ className, id }) => {
   return (
-    <div className={cn("py-24 px-6 md:px-10 bg-black relative overflow-hidden", className)}>
+    <div id={id} className={cn("py-24 px-6 md:px-10 bg-black relative overflow-hidden", className)}>
       {/* Background elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-b from-blue-500/10 to-purple-500/5 blur-2xl rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
