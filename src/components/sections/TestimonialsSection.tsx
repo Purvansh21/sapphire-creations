@@ -79,38 +79,42 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
               What People Say
             </div>
           </FadeIn>
-          <FadeIn direction="up" delay={200}>
+          <FadeIn direction="up" delay={0.2}>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white tracking-tight">
               Trusted by Industry Leaders
             </h2>
           </FadeIn>
-          <FadeIn direction="up" delay={400}>
+          <FadeIn direction="up" delay={0.4}>
             <p className="text-lg text-white/70 max-w-3xl mx-auto">
               Hear from professionals who have experienced the transformative impact of our services firsthand.
             </p>
           </FadeIn>
         </div>
         
-        <div className="relative mb-12">
-          <ScrollArea className="overflow-hidden relative h-[300px] md:h-[300px]">
-            <div className="relative shadow-xl bg-gray-900/40 border border-gray-800 rounded-2xl overflow-hidden">
-              {testimonials.map((testimonial, index) => (
-                <div 
-                  key={testimonial.id}
-                  className={cn(
-                    "absolute inset-0 transition-all duration-800 ease-in-out p-8 md:p-12",
-                    activeIndex === index 
-                      ? "opacity-100 transform translate-y-0 scale-100" 
-                      : isTransitioning
-                        ? "opacity-0 transform -translate-y-8 scale-95"
-                        : "opacity-0 transform translate-y-8 scale-95 pointer-events-none"
-                  )}
-                  style={{
-                    transitionDuration: '800ms',
-                    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
-                  }}
-                >
-                  <FadeIn>
+        <div className="relative mx-auto max-w-4xl">
+          <div className="w-full relative max-w-4xl mx-auto">
+            {/* Gradient background blur */}
+            <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500/20 to-indigo-500/20 transform scale-[0.85] rounded-full blur-3xl" />
+            
+            {/* Testimonial card */}
+            <div className="relative shadow-xl bg-gray-900/40 border border-gray-800 px-6 py-10 md:p-12 overflow-hidden rounded-2xl">
+              <ScrollArea className="h-[300px] md:h-[320px] w-full">
+                {testimonials.map((testimonial, index) => (
+                  <div 
+                    key={testimonial.id}
+                    className={cn(
+                      "transition-all duration-800 ease-in-out p-4",
+                      activeIndex === index 
+                        ? "opacity-100 transform translate-y-0 scale-100" 
+                        : isTransitioning
+                          ? "opacity-0 transform -translate-y-8 scale-95"
+                          : "opacity-0 transform translate-y-8 scale-95 pointer-events-none hidden"
+                    )}
+                    style={{
+                      transitionDuration: '800ms',
+                      transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}
+                  >
                     <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                       <div className="flex-shrink-0">
                         <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 backdrop-blur-md border border-white/20 flex items-center justify-center">
@@ -136,14 +140,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
                         </div>
                       </div>
                     </div>
-                  </FadeIn>
-                </div>
-              ))}
+                  </div>
+                ))}
+              </ScrollArea>
               
               {/* Meteors effect */}
               <Meteors number={15} className="opacity-70" />
             </div>
-          </ScrollArea>
+          </div>
           
           <div className="flex justify-center space-x-3 mt-6">
             {testimonials.map((_, index) => (
@@ -165,7 +169,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ classN
         
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
           {["Recognized by", "Featured in", "Award Winner", "Trusted by"].map((text, index) => (
-            <FadeIn key={index} delay={index * 100}>
+            <FadeIn key={index} delay={index * 0.1}>
               <div className="text-center">
                 <div className="h-12 flex items-center justify-center">
                   <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${

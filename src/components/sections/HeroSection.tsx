@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { useParallaxEffect } from '@/hooks/use-animation';
 import { cn } from '@/lib/utils';
-import { MousePointer, PenTool, Layout, Image } from 'lucide-react';
+import { PenTool, Layout, Image } from 'lucide-react';
 import { Logo } from '@/components/ui/logo';
 
 interface HeroSectionProps {
@@ -120,14 +120,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
               Get In Touch
             </button>
           </div>
-        </FadeIn>
-
-        {/* Fixed spacing for scroll indicator to prevent overlap */}
-        <div className="w-full h-20 mt-12"></div>
-        
-        <FadeIn delay={1200} duration={1000} className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70" style={{ bottom: "5rem" }}>
-          <p className="mb-2 text-sm">Scroll to explore</p>
-          <MousePointer className="animate-bounce h-5 w-5" />
         </FadeIn>
       </div>
     </div>
