@@ -164,7 +164,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
                     <div className="p-8 text-center">
                       <div className="w-32 h-32 rounded-full mx-auto mb-6 flex items-center justify-center bg-gradient-to-br from-blue-900/50 to-indigo-900/50 backdrop-blur-xl border border-white/10">
                         <div className="w-24 h-24 rounded-full bg-gradient-to-r from-blue-400 to-indigo-400 flex items-center justify-center">
-                          {service.icon.props.children}
+                          {service.icon}
                         </div>
                       </div>
                       <h3 className="text-3xl font-display font-bold text-white mb-4">
