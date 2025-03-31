@@ -83,8 +83,8 @@ const FAQs = () => {
         {/* FAQ Section */}
         <FAQSection 
           items={faqItems}
-          supportHeading="Still have questions?"
-          supportDescription="Our team is just a message away. Let's talk about your project needs and how we can help bring your vision to life."
+          supportHeading="Got a question? Just ask!"
+          supportDescription="Our team is ready to help bring your vision to life."
           supportButtonText="Contact Our Team"
         />
       </main>

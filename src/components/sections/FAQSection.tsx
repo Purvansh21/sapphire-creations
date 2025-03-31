@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -9,6 +9,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from '@/components/animations/FadeIn';
+import { ContactForm } from './ContactForm';
 
 interface FaqItem {
   id: string;
@@ -26,6 +27,7 @@ interface FAQSectionProps {
   supportDescription?: string;
   supportButtonText?: string;
   supportButtonUrl?: string;
+  emailTo?: string;
 }
 
 export const FAQSection: React.FC<FAQSectionProps> = ({
@@ -34,11 +36,19 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
   heading = "Frequently Asked Questions",
   description = "Find answers to common questions about our services. Can't find what you're looking for? Contact our support team.",
   items = [],
-  supportHeading = "Need more support?",
+  supportHeading = "Still have questions?",
   supportDescription = "Our dedicated support team is here to help you with any questions or concerns. Get in touch with us for personalized assistance.",
   supportButtonText = "Contact Support",
   supportButtonUrl = "#contact",
+  emailTo = "support@yourdomain.com", // Default email to send questions to
 }) => {
+  const [contactFormOpen, setContactFormOpen] = useState(false);
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setContactFormOpen(true);
+  };
+
   return (
     <section id={id} className={`py-24 bg-black text-white ${className}`}>
       <div className="container space-y-16 max-w-7xl mx-auto px-4 sm:px-6">
@@ -99,16 +109,20 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row">
               <Button 
                 className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 border-0" 
-                asChild
+                onClick={handleContactClick}
               >
-                <a href={supportButtonUrl}>
-                  {supportButtonText}
-                </a>
+                {supportButtonText}
               </Button>
             </div>
           </div>
         </FadeIn>
       </div>
+      
+      <ContactForm 
+        open={contactFormOpen} 
+        onOpenChange={setContactFormOpen} 
+        emailTo={emailTo}
+      />
     </section>
   );
 };
