@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/ui/logo';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   className?: string;
@@ -45,16 +46,26 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
             {label: "Services", href: "#services"}, 
             {label: "Portfolio", href: "#portfolio"}, 
             {label: "Process", href: "#process"}, 
-            {label: "Testimonials", href: "#testimonials"}, 
+            {label: "FAQs", href: "/faqs"}, 
             {label: "Contact Us", href: "#contact"}
           ].map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-white/80 hover:text-white transition-colors text-sm font-medium"
-            >
-              {item.label}
-            </a>
+            item.href.startsWith('#') ? (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-white/80 hover:text-white transition-colors text-sm font-medium"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.label}
+                to={item.href}
+                className="text-white/80 hover:text-white transition-colors text-sm font-medium"
+              >
+                {item.label}
+              </Link>
+            )
           ))}
         </nav>
 
@@ -88,17 +99,28 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
             {label: "Services", href: "#services"}, 
             {label: "Portfolio", href: "#portfolio"}, 
             {label: "Process", href: "#process"}, 
-            {label: "Testimonials", href: "#testimonials"}, 
+            {label: "FAQs", href: "/faqs"}, 
             {label: "Contact Us", href: "#contact"}
           ].map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-white/80 hover:text-white transition-colors text-base font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {item.label}
-            </a>
+            item.href.startsWith('#') ? (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-white/80 hover:text-white transition-colors text-base font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.label}
+                to={item.href}
+                className="text-white/80 hover:text-white transition-colors text-base font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            )
           ))}
           <div className="pt-4 flex flex-col space-y-3 w-full">
             <button className="px-4 py-2 text-white/90 hover:text-white transition-colors text-sm font-medium border border-white/20 rounded-lg">
