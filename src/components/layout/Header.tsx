@@ -40,13 +40,20 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
         </div>
 
         <nav className="hidden md:flex items-center space-x-6">
-          {["About", "Services", "Portfolio", "Process", "Testimonials", "Contact"].map((item) => (
+          {[
+            {label: "About Us", href: "#about"}, 
+            {label: "Services", href: "#services"}, 
+            {label: "Portfolio", href: "#portfolio"}, 
+            {label: "Process", href: "#process"}, 
+            {label: "Testimonials", href: "#testimonials"}, 
+            {label: "Contact Us", href: "#contact"}
+          ].map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               className="text-white/80 hover:text-white transition-colors text-sm font-medium"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </nav>
@@ -76,14 +83,21 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
         )}
       >
         <nav className="flex flex-col items-center space-y-5 p-6">
-          {["About", "Services", "Portfolio", "Process", "Testimonials", "Contact"].map((item) => (
+          {[
+            {label: "About Us", href: "#about"}, 
+            {label: "Services", href: "#services"}, 
+            {label: "Portfolio", href: "#portfolio"}, 
+            {label: "Process", href: "#process"}, 
+            {label: "Testimonials", href: "#testimonials"}, 
+            {label: "Contact Us", href: "#contact"}
+          ].map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               className="text-white/80 hover:text-white transition-colors text-base font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {item}
+              {item.label}
             </a>
           ))}
           <div className="pt-4 flex flex-col space-y-3 w-full">

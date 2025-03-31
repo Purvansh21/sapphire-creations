@@ -98,7 +98,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
         </FadeIn>
         
         <FadeIn delay={500} duration={1000} className="mb-6">
-          <Logo size="lg" className="mx-auto mb-8" />
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tight text-white">
             Creative Design Solutions
           </h1>
