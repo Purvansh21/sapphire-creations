@@ -89,54 +89,13 @@ export const CTASection: React.FC<CTASectionProps> = ({
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <Parallax speed={0.05}>
-            <div className="rounded-xl overflow-hidden relative shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-sm z-10"></div>
-              <div className="relative z-20 p-10 md:p-14">
-                <FadeIn>
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center mb-6">
-                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-                      <div className="w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 animate-pulse"></div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-start mb-6">
-                    <h3 className="text-2xl md:text-3xl font-display font-bold text-white">Missed Our Special Offer?</h3>
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-blue-500 text-white rounded-full">Don't Worry</span>
-                  </div>
-                  <p className="text-white/80 mb-8">
-                    We may not be handing out freebies anymore, but we're still serving top-notch creativity freshly crafted, just like your nearest vegetable shop!
-                  </p>
-                  
-                  <ul className="space-y-4 mb-8">
-                    {[
-                      "Personal brand design",
-                      "Brand promotional short video",
-                      "Personalized poster design"
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center text-white/90">
-                        <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-3"></div>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <div className="mb-8">
-                    <div className="text-white font-display font-bold text-xl mb-1">The best part?</div>
-                    <div className="text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 font-display font-bold">
-                      It's completely FREE!
-                    </div>
-                  </div>
-                  
-                  <a 
-                    href="#contact" 
-                    className="block text-center w-full bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-6 rounded-lg transition-all"
-                  >
-                    Learn More
-                  </a>
-                  
-                  <div className="text-white/60 text-sm mt-4">
-                    *Terms & conditions apply. Limited time offer.
-                  </div>
-                </FadeIn>
+            {/* Empty blue box to replace the special offer section */}
+            <div className="rounded-xl overflow-hidden relative shadow-2xl h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-indigo-600/40 backdrop-blur-sm z-0"></div>
+              <div className="relative z-10 p-8 md:p-12 h-full flex items-center justify-center">
+                <div className="w-24 h-24 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/40 backdrop-blur-md"></div>
+                </div>
               </div>
             </div>
           </Parallax>

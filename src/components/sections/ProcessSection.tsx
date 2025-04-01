@@ -95,24 +95,6 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ className, id })
             ))}
           </div>
         </div>
-        
-        <FadeIn delay={800}>
-          <div className="mt-20 p-8 rounded-xl bg-gradient-to-r from-blue-900/30 to-indigo-900/30 backdrop-blur-sm border border-white/10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-display font-bold text-white mb-4">Ready to Elevate Your Brand?</h3>
-                <p className="text-white/70">
-                  Let's work together to shape a brand identity that stands out and connects with your audience. Get in touch today for a free consultation!
-                </p>
-              </div>
-              <div className="flex justify-center md:justify-end">
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105">
-                  Start Your Project
-                </button>
-              </div>
-            </div>
-          </div>
-        </FadeIn>
       </div>
     </div>
   );

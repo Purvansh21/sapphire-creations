@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
-import { Parallax } from '@/components/animations/Parallax';
 import { cn } from '@/lib/utils';
 
 interface Benefit {
@@ -72,7 +71,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id 
           </FadeIn>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <FadeIn key={benefit.id} delay={index * 200} direction="up">
               <div className="glass rounded-xl p-8 h-full transition-transform duration-300 hover:scale-105">
@@ -99,90 +98,6 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id 
             </FadeIn>
           ))}
         </div>
-        
-        <Parallax speed={0.1}>
-          <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <FadeIn direction="right">
-                  <h3 className="text-3xl font-display font-bold text-white mb-6">
-                    How it transforms your workflow
-                  </h3>
-                  <p className="text-white/70 mb-8">
-                    Our solution seamlessly integrates into your existing processes, 
-                    enhancing productivity while reducing friction points that slow you down.
-                  </p>
-                  
-                  <div className="space-y-4">
-                    {[
-                      "Automates repetitive tasks",
-                      "Provides intelligent insights",
-                      "Adapts to your unique needs",
-                      "Constantly evolves with your feedback"
-                    ].map((item, index) => (
-                      <FadeIn key={index} delay={index * 100} duration={800}>
-                        <div className="flex items-start">
-                          <div className="mr-3 mt-1 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
-                            <svg className="h-3 w-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                            </svg>
-                          </div>
-                          <span className="text-white/80">{item}</span>
-                        </div>
-                      </FadeIn>
-                    ))}
-                  </div>
-                </FadeIn>
-              </div>
-              
-              <div className="relative">
-                <FadeIn>
-                  <div className="relative rounded-lg overflow-hidden shadow-2xl">
-                    <div className="aspect-video bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-lg p-6 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
-                          <svg className="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                        </div>
-                        <p className="text-white font-medium">Watch the demo</p>
-                      </div>
-                    </div>
-                    
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent flex items-end">
-                      <div className="p-6">
-                        <div className="w-full bg-white/20 rounded-full h-1 mb-2">
-                          <div className="bg-white h-1 rounded-full w-1/3"></div>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <div className="text-white/80 text-sm">1:23 / 3:45</div>
-                          <div className="flex space-x-3">
-                            {[
-                              <svg key="play" className="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                              </svg>,
-                              <svg key="volume" className="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
-                              </svg>,
-                              <svg key="fullscreen" className="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clipRule="evenodd" />
-                              </svg>
-                            ].map((icon, i) => (
-                              <button key={i} className="focus:outline-none hover:text-white/100 transition-colors">
-                                {icon}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </FadeIn>
-              </div>
-            </div>
-          </div>
-        </Parallax>
       </div>
     </div>
   );
