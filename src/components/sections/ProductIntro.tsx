@@ -23,19 +23,19 @@ export const ProductIntro: React.FC<ProductIntroProps> = ({ className, id }) => 
             <FadeIn direction="right">
               <div className="text-sm font-medium text-blue-400 mb-3 tracking-wider">OUR APPROACH</div>
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white tracking-tight">
-                Creativity Meets Strategic Design
+                Creativity with a Purpose
               </h2>
               <p className="text-lg text-white/70 mb-8">
                 At Sapphire Creations, we blend artistic innovation with strategic thinking to create designs 
-                that don't just look good—they deliver results for your business.
+                that look stunning and drive real results for your business.
               </p>
               
               <ul className="space-y-4 mb-8">
                 {[
                   "Brand-focused design that tells your story",
-                  "Strategic visual communication",
+                  "Strategic visual communication that makes an impact",
                   "Consistent aesthetics across all platforms",
-                  "Data-driven creative solutions"
+                  "Data-driven creative solutions for maximum effectiveness"
                 ].map((item, index) => (
                   <FadeIn key={index} delay={index * 100} duration={800}>
                     <li className="flex items-start">
@@ -52,7 +52,7 @@ export const ProductIntro: React.FC<ProductIntroProps> = ({ className, id }) => 
               
               <FadeIn duration={1000}>
                 <button className="px-6 py-3 bg-white text-black rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  Learn about our process
+                  Want to see how we work?
                 </button>
               </FadeIn>
             </FadeIn>
@@ -83,13 +83,13 @@ export const ProductIntro: React.FC<ProductIntroProps> = ({ className, id }) => 
             <FadeIn>
               <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-6 backdrop-blur-sm border border-white/20 shadow-xl">
                 <p className="text-white font-medium">
-                  "Sapphire Creations transformed our brand identity completely. Their designs exceeded our expectations."
+                  "We make designs so good, even your competition might 'accidentally' take inspiration."
                 </p>
                 <div className="mt-4 flex items-center">
                   <div className="h-10 w-10 rounded-full bg-white/30"></div>
                   <div className="ml-3">
-                    <div className="text-white font-medium text-sm">Sarah Johnson</div>
-                    <div className="text-white/70 text-xs">Marketing Director</div>
+                    <div className="text-white font-medium text-sm">Ctrl + Z</div>
+                    <div className="text-white/70 text-xs">Janitor</div>
                   </div>
                 </div>
               </div>

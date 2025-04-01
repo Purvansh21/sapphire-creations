@@ -19,22 +19,22 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ className, id })
     {
       id: 1,
       title: "Plan",
-      description: "We develop a detailed strategy for your business needs, analyzing your target audience and competitors."
+      description: "We dive deep into your business goals, target audience, and competitors (don't worry, no corporate espionage—just good research)."
     },
     {
       id: 2,
       title: "Create",
-      description: "Our design team crafts unique, on-brand visual content tailored to your specific requirements."
+      description: "Our design wizards craft stunning, on-brand visuals and content that don't just look good—they work."
     },
     {
       id: 3,
       title: "Manage",
-      description: "We handle all aspects of your brand presence, from social media accounts to content distribution."
+      description: "From handling social media chaos to ensuring smooth content distribution, we keep things running while you focus on your business."
     },
     {
       id: 4,
       title: "Grow",
-      description: "Through consistent quality content and strategic promotion, we help your brand reach new audiences."
+      description: "We help your brand reach the right people, at the right time, in the right way—because success shouldn't be left to chance."
     }
   ];
 
@@ -52,13 +52,12 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ className, id })
           </FadeIn>
           <FadeIn delay={200}>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white tracking-tight">
-              How We Work
+              Our Process: How We Work
             </h2>
           </FadeIn>
           <FadeIn delay={400}>
             <p className="text-lg text-white/70 max-w-3xl mx-auto">
-              Our systematic approach ensures that we deliver consistent, high-quality results 
-              that help your brand grow and thrive.
+              We keep things simple, smart, and effective—no unnecessary jargon, just results.
             </p>
           </FadeIn>
         </div>
@@ -101,10 +100,9 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ className, id })
           <div className="mt-20 p-8 rounded-xl bg-gradient-to-r from-blue-900/30 to-indigo-900/30 backdrop-blur-sm border border-white/10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-display font-bold text-white mb-4">Ready to Transform Your Brand?</h3>
+                <h3 className="text-2xl font-display font-bold text-white mb-4">Ready to Elevate Your Brand?</h3>
                 <p className="text-white/70">
-                  Our team is ready to help you elevate your brand with our professional design services. 
-                  Let's create something amazing together.
+                  Let's work together to shape a brand identity that stands out and connects with your audience. Get in touch today for a free consultation!
                 </p>
               </div>
               <div className="flex justify-center md:justify-end">

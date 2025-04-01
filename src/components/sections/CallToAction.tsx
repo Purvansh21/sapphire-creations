@@ -99,11 +99,11 @@ export const CTASection: React.FC<CTASectionProps> = ({
                     </div>
                   </div>
                   <div className="flex justify-between items-start mb-6">
-                    <h3 className="text-2xl md:text-3xl font-display font-bold text-white">Special Offer</h3>
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-blue-500 text-white rounded-full">Limited Time</span>
+                    <h3 className="text-2xl md:text-3xl font-display font-bold text-white">Missed Our Special Offer?</h3>
+                    <span className="inline-block px-3 py-1 text-xs font-medium bg-blue-500 text-white rounded-full">Don't Worry</span>
                   </div>
                   <p className="text-white/80 mb-8">
-                    Get a complete marketing package including logo design, website, and social media strategy - 25% OFF for a limited time!
+                    We may not be handing out freebies anymore, but we're still serving top-notch creativity freshly crafted, just like your nearest vegetable shop!
                   </p>
                   
                   <ul className="space-y-4 mb-8">
@@ -148,8 +148,8 @@ export const CTASection: React.FC<CTASectionProps> = ({
                 Ready to Elevate Your Brand?
               </h2>
               <p className="text-lg text-white/70 mb-8">
-                Let's work together to transform your brand identity and create designs that resonate with your audience. 
-                Get in touch today for a free consultation.
+                Let's work together to shape a brand identity that stands out and connects with your audience. 
+                Get in touch today for a free consultation!
               </p>
             </FadeIn>
             

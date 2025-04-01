@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { useParallaxEffect } from '@/hooks/use-animation';
@@ -33,7 +32,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
     };
   }, []);
 
-  // Generate particles for the background
   const particles = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     size: Math.random() * 8 + 2,
@@ -51,12 +49,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
         className
       )}
     >
-      {/* Circuit board background pattern */}
       <div className="absolute inset-0 bg-black opacity-90 z-0">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/7d9d5a78-2237-4294-8b02-fe193ec6e410.png')] bg-center bg-no-repeat bg-contain opacity-20"></div>
       </div>
       
-      {/* Particles */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map((particle) => (
           <div
@@ -76,7 +72,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
         ))}
       </div>
       
-      {/* 3D Element */}
       <div 
         className="absolute w-[600px] h-[600px] pointer-events-none opacity-70"
         style={{
@@ -89,7 +84,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
         <div className="absolute inset-20 bg-gradient-to-tr from-cyan-300/20 to-blue-300/20 rounded-full blur-md"></div>
       </div>
       
-      {/* Content */}
       <div className="relative z-10 px-6 text-center max-w-5xl" style={{ opacity: 1 - scrollProgress }}>
         <FadeIn delay={300} duration={800} className="mb-2">
           <div className="inline-block px-4 py-1 mb-4 text-sm font-medium bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white">
@@ -105,8 +99,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
         
         <FadeIn delay={700} duration={1000} direction="up" distance={30}>
           <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-            We craft exceptional visual identities and digital experiences that help brands stand out.
-            From logo designs to social media management, we bring your vision to life.
+            We don't just design—we craft exceptional visual identities and digital experiences that make your brand unforgettable. Whether it's a logo, website, or social media campaign, we bring your vision to life with creativity and precision.
           </p>
         </FadeIn>
         

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Parallax } from '@/components/animations/Parallax';
@@ -22,38 +23,38 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
   const services: Service[] = [
     {
       id: 1,
-      title: "Digital Marketing",
-      description: "Strategic online marketing campaigns to boost your brand's digital presence and engagement.",
+      title: "Logo Design",
+      description: "Unique and memorable logos that define your brand. Because your business deserves more than a \"designed-in-MS-Paint\" kind of logo.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
-          <Target className="h-5 w-5 text-white" />
+          <PenTool className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 2,
-      title: "Business Marketing",
-      description: "Comprehensive marketing strategies designed to grow your business and increase revenue.",
+      title: "Graphic Design",
+      description: "Stunning visuals for print, digital, and branding needs. Whether it's a sleek brochure or a meme-worthy social post, we design it all (yes, even that weird idea you have).",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600 flex items-center justify-center">
-          <Activity className="h-5 w-5 text-white" />
+          <Palette className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 3,
-      title: "Social Media Marketing",
-      description: "Engaging social media campaigns that build your brand's online community and drive engagement.",
+      title: "UI/UX Design",
+      description: "Intuitive, user-friendly designs for websites and apps. If people need a manual to use your website, you need us.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 to-indigo-600 flex items-center justify-center">
-          <MessageSquare className="h-5 w-5 text-white" />
+          <Layout className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 4,
-      title: "Search Marketing",
-      description: "SEO and SEM strategies to improve your visibility in search engines and drive qualified traffic.",
+      title: "Website Design & Development",
+      description: "Custom-built, responsive, and optimized websites. Fast, beautiful, and Google-approved—because a slow website is basically a digital ghost town.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center">
           <Globe className="h-5 w-5 text-white" />
@@ -62,69 +63,79 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
     },
     {
       id: 5,
-      title: "Content Marketing",
-      description: "Strategic content creation that tells your brand story and connects with your target audience.",
+      title: "App Development",
+      description: "Innovative mobile and web apps tailored to your needs. We build apps that don't crash at the worst moment (we've all been there).",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
-          <PenTool className="h-5 w-5 text-white" />
+          <Activity className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 6,
-      title: "Direct Marketing",
-      description: "Targeted campaigns that connect directly with your customers for immediate response and action.",
+      title: "Social Media Management",
+      description: "Strategy, content, and engagement to grow your presence. We post, engage, and handle trolls—so you don't have to.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center">
-          <Megaphone className="h-5 w-5 text-white" />
+          <MessageSquare className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 7,
-      title: "Advertising & Promotions",
-      description: "Creative ad campaigns and promotional strategies that capture attention and drive conversions.",
+      title: "Content Marketing",
+      description: "Blogs, copies, and creative content that captivate. Because \"lorem ipsum\" is not a content strategy.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center">
-          <Image className="h-5 w-5 text-white" />
+          <PenTool className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 8,
-      title: "Website Design",
-      description: "Custom, responsive website design that represents your brand and delivers exceptional user experience.",
+      title: "SEO & Search Marketing",
+      description: "Rank higher, drive traffic, and increase visibility. We speak fluent Google so your brand gets the attention it deserves.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
-          <Layout className="h-5 w-5 text-white" />
+          <Target className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 9,
-      title: "Graphics Design",
-      description: "Professional visual design solutions that communicate your brand message effectively.",
+      title: "Advertising & Promotions",
+      description: "Campaigns that convert and boost brand awareness. Your ads should make people click, not cringe—we make that happen.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-blue-500 flex items-center justify-center">
-          <Palette className="h-5 w-5 text-white" />
+          <Megaphone className="h-5 w-5 text-white" />
         </div>
       )
     },
     {
       id: 10,
-      title: "Logo Design",
-      description: "Distinctive logo creation that embodies your brand identity and makes a lasting impression.",
+      title: "Photo Editing",
+      description: "High-quality retouching and enhancements. No over-editing, no fake perfection—just visuals that pop in the right way.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 flex items-center justify-center">
-          <PenTool className="h-5 w-5 text-white" />
+          <Image className="h-5 w-5 text-white" />
+        </div>
+      )
+    },
+    {
+      id: 11,
+      title: "Video Editing",
+      description: "Engaging, professional edits for social media and marketing. Because shaky, low-quality videos are only acceptable in found-footage horror films.",
+      icon: (
+        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+          <Video className="h-5 w-5 text-white" />
         </div>
       )
     }
   ];
 
   // Divide services into two columns for better display
-  const servicesFirstHalf = services.slice(0, 5);
-  const servicesSecondHalf = services.slice(5);
+  const servicesFirstHalf = services.slice(0, 6);
+  const servicesSecondHalf = services.slice(6);
 
   return (
     <div id={id} className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-black to-blue-950", className)}>
@@ -212,7 +223,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {servicesSecondHalf.map((service) => (
-                <FadeIn key={service.id} direction="left" delay={(service.id - 5) * 50}>
+                <FadeIn key={service.id} direction="left" delay={(service.id - 6) * 50}>
                   <div 
                     className={cn(
                       "p-4 rounded-xl cursor-pointer transition-all duration-300",
