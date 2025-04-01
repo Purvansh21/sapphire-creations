@@ -22,26 +22,26 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id 
   const benefits: Benefit[] = [
     {
       id: 1,
-      title: "Efficiency Boost",
-      description: "Streamline your workflow and accomplish more in less time.",
-      value: "42%",
+      title: "Productivity Boost",
+      description: "Streamline your processes and get more done in less time.",
+      value: "+32%",
       metric: "productivity increase",
       color: "from-blue-500 to-blue-700"
     },
     {
       id: 2,
-      title: "Resource Savings",
-      description: "Reduce waste and optimize resource allocation.",
-      value: "3.5x",
-      metric: "resource optimization",
+      title: "Resource Optimization",
+      description: "Focus on what works and maximize your return on investment.",
+      value: "1.8x",
+      metric: "better resource use",
       color: "from-purple-500 to-purple-700"
     },
     {
       id: 3,
-      title: "User Satisfaction",
-      description: "Delight users with intuitive, responsive experiences.",
-      value: "98%",
-      metric: "satisfaction rate",
+      title: "Client Satisfaction",
+      description: "Delivering tailored solutions that drive success and long-term relationships.",
+      value: "90%",
+      metric: "client satisfaction",
       color: "from-cyan-500 to-cyan-700"
     }
   ];
@@ -61,13 +61,13 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id 
           </FadeIn>
           <FadeIn direction="up" delay={200}>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white tracking-tight">
-              Transform Your Experience
+              Transform Your Experience with Real Results
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={400}>
             <p className="text-lg text-white/70 max-w-3xl mx-auto">
-              See how our product delivers tangible benefits that improve 
-              your daily life and long-term outcomes.
+              See how our solutions deliver tangible benefits that improve 
+              your brand visibility and business outcomes.
             </p>
           </FadeIn>
         </div>

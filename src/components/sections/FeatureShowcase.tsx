@@ -81,6 +81,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
         </div>
       )
     },
+    // More services rendered in three rows instead of two uneven ones
     {
       id: 7,
       title: "Content Marketing",
@@ -133,9 +134,10 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
     }
   ];
 
-  // Divide services into two columns for better display
-  const servicesFirstHalf = services.slice(0, 6);
-  const servicesSecondHalf = services.slice(6);
+  // We'll create three rows with 4-4-3 distribution
+  const servicesRow1 = services.slice(0, 4);
+  const servicesRow2 = services.slice(4, 8);
+  const servicesRow3 = services.slice(8);
 
   return (
     <div id={id} className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-black to-blue-950", className)}>
@@ -191,8 +193,9 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
           </div>
           
           <div className="space-y-4">
+            {/* First row of services */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {servicesFirstHalf.map((service) => (
+              {servicesRow1.map((service) => (
                 <FadeIn key={service.id} direction="left" delay={service.id * 50}>
                   <div 
                     className={cn(
@@ -221,9 +224,41 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
               ))}
             </div>
             
+            {/* Second row of services */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {servicesSecondHalf.map((service) => (
-                <FadeIn key={service.id} direction="left" delay={(service.id - 6) * 50}>
+              {servicesRow2.map((service) => (
+                <FadeIn key={service.id} direction="left" delay={(service.id - 4) * 50}>
+                  <div 
+                    className={cn(
+                      "p-4 rounded-xl cursor-pointer transition-all duration-300",
+                      activeService === service.id 
+                        ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transform scale-105" 
+                        : "hover:bg-white/5 border border-transparent"
+                    )}
+                    onClick={() => setActiveService(service.id)}
+                  >
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-3">
+                        {service.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1">
+                          {service.title}
+                        </h3>
+                        <p className="text-white/70 text-sm">
+                          {service.description.substring(0, 60)}...
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+            
+            {/* Third row of services */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {servicesRow3.map((service) => (
+                <FadeIn key={service.id} direction="left" delay={(service.id - 8) * 50}>
                   <div 
                     className={cn(
                       "p-4 rounded-xl cursor-pointer transition-all duration-300",
