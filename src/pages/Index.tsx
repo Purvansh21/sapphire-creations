@@ -13,34 +13,44 @@ import { ProcessSection } from '@/components/sections/ProcessSection';
 const Index = () => {
   useEffect(() => {
     // Add smooth scroll behavior for anchor links
+    const handleAnchorClick = (e: Event) => {
+      e.preventDefault();
+      
+      const target = e.currentTarget as HTMLAnchorElement;
+      const targetId = target.getAttribute('href');
+      
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId as string);
+      if (targetElement) {
+        // Add offset for header
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    };
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
+      anchor.addEventListener('click', handleAnchorClick);
     });
     
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', () => {});
+        anchor.removeEventListener('click', handleAnchorClick);
       });
     };
   }, []);
 
   return (
-    <div className="bg-black min-h-screen text-white overflow-hidden">
+    <div className="bg-black min-h-screen text-white">
       <Header />
       
-      <main>
+      <main className="min-h-[calc(100vh-64px)] pb-0">
         <HeroSection />
         <ProductIntro id="about" />
         <FeatureShowcase id="services" />

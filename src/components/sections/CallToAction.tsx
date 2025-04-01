@@ -80,14 +80,14 @@ export const CTASection: React.FC<CTASectionProps> = ({
   };
 
   return (
-    <div id={id} className={cn("py-24 px-6 md:px-10 bg-black relative overflow-hidden", className)}>
+    <section id={id} className={cn("py-24 px-6 md:px-10 bg-black relative overflow-hidden", className)}>
       {/* Background elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-b from-blue-500/10 to-indigo-500/5 blur-2xl rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-t from-indigo-500/10 to-blue-500/5 blur-2xl rounded-full transform -translate-x-1/3 translate-y-1/3"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <Parallax speed={0.05}>
             <div className="rounded-xl overflow-hidden relative shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 backdrop-blur-sm z-10"></div>
@@ -98,9 +98,12 @@ export const CTASection: React.FC<CTASectionProps> = ({
                       <div className="w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 animate-pulse"></div>
                     </div>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6">Special Initial Offer</h3>
+                  <div className="flex justify-between items-start mb-6">
+                    <h3 className="text-2xl md:text-3xl font-display font-bold text-white">Special Offer</h3>
+                    <span className="inline-block px-3 py-1 text-xs font-medium bg-blue-500 text-white rounded-full">Limited Time</span>
+                  </div>
                   <p className="text-white/80 mb-8">
-                    For a limited time, we're offering new clients a special package to experience our services:
+                    Get a complete marketing package including logo design, website, and social media strategy - 25% OFF for a limited time!
                   </p>
                   
                   <ul className="space-y-4 mb-8">
@@ -123,7 +126,14 @@ export const CTASection: React.FC<CTASectionProps> = ({
                     </div>
                   </div>
                   
-                  <div className="text-white/60 text-sm">
+                  <a 
+                    href="#contact" 
+                    className="block text-center w-full bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-6 rounded-lg transition-all"
+                  >
+                    Learn More
+                  </a>
+                  
+                  <div className="text-white/60 text-sm mt-4">
                     *Terms & conditions apply. Limited time offer.
                   </div>
                 </FadeIn>
@@ -213,6 +223,6 @@ export const CTASection: React.FC<CTASectionProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
