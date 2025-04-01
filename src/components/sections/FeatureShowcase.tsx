@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Parallax } from '@/components/animations/Parallax';
@@ -180,8 +179,8 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
             </Parallax>
           </div>
           
-          <div className="space-y-2 md:space-y-3">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {servicesFirstHalf.map((service) => (
                 <FadeIn key={service.id} direction="left" delay={service.id * 50}>
                   <div 
@@ -211,7 +210,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
               ))}
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {servicesSecondHalf.map((service) => (
                 <FadeIn key={service.id} direction="left" delay={(service.id - 5) * 50}>
                   <div 
@@ -240,21 +239,6 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
                 </FadeIn>
               ))}
             </div>
-
-            <FadeIn delay={500}>
-              <div className="mt-8 p-6 rounded-xl border border-white/10 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-sm">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-xl font-display font-semibold text-white">Special Offer</h4>
-                  <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-sm rounded-full">Limited Time</div>
-                </div>
-                <p className="text-white/70 mt-2 mb-4">
-                  Get a complete marketing package including logo design, website, and social media strategy - 25% OFF for a limited time!
-                </p>
-                <button className="w-full py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors border border-white/20">
-                  Learn More
-                </button>
-              </div>
-            </FadeIn>
           </div>
         </div>
       </div>
