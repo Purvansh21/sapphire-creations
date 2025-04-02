@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Logo } from '@/components/ui/logo';
 import { Instagram, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface FooterProps {
   className?: string;
@@ -24,11 +26,21 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
     },
     {
       title: "Company",
-      links: ["About Us", "Our Work", "Process", "Team", "FAQs"]
+      links: [
+        { name: "About Us", href: "#about" },
+        { name: "Our Work", href: "#portfolio" },
+        { name: "Process", href: "#process" },
+        { name: "Team", href: "#about" },
+        { name: "FAQs", href: "/faqs" }
+      ]
     },
     {
       title: "Contact",
-      links: ["Get a Quote", "Privacy Policy", "Terms"]
+      links: [
+        { name: "Get a Quote", href: "#contact" },
+        { name: "Privacy Policy", href: "/privacy-policy" },
+        { name: "Terms", href: "/terms" }
+      ]
     }
   ];
 
@@ -110,11 +122,17 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                       </li>
                     ))
                   ) : (
-                    (column.links as string[]).map((link) => (
-                      <li key={link}>
-                        <a href="#" className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
-                          {link}
-                        </a>
+                    (column.links as Array<{ name: string; href: string }>).map((link) => (
+                      <li key={link.name}>
+                        {link.href.startsWith("/") ? (
+                          <Link to={link.href} className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
+                            {link.name}
+                          </Link>
+                        ) : (
+                          <a href={link.href} className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
+                            {link.name}
+                          </a>
+                        )}
                       </li>
                     ))
                   )}
@@ -130,13 +148,13 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
               © {currentYear} Sapphire Creations. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-              <a href="#" className="text-white/50 hover:text-white text-xs transition-colors">
+              <Link to="/privacy-policy" className="text-white/50 hover:text-white text-xs transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-white/50 hover:text-white text-xs transition-colors">
+              </Link>
+              <Link to="/terms" className="text-white/50 hover:text-white text-xs transition-colors">
                 Terms of Service
-              </a>
-              <a href="#" className="text-white/50 hover:text-white text-xs transition-colors">
+              </Link>
+              <a href="#contact" className="text-white/50 hover:text-white text-xs transition-colors">
                 Contact Us
               </a>
             </div>

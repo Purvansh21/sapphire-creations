@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
         {/* Back to Home Button */}
         <div className="max-w-4xl mx-auto px-6 pb-8">
           <Link to="/">
-            <Button variant="outline" className="mb-8">
+            <Button variant="secondary" className="mb-8 bg-blue-600 hover:bg-blue-700 text-white border-0">
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
             </Button>
           </Link>
