@@ -4,6 +4,9 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { FAQSection } from '@/components/sections/FAQSection';
 import { Meteors } from '@/components/ui/meteors';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const faqItems = [
   {
@@ -78,6 +81,15 @@ const FAQs = () => {
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto"></div>
           </div>
+        </div>
+        
+        {/* Back to Home Button */}
+        <div className="max-w-7xl mx-auto px-6 pb-8">
+          <Link to="/">
+            <Button variant="outline" className="mb-8">
+              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
+            </Button>
+          </Link>
         </div>
         
         {/* FAQ Section */}
