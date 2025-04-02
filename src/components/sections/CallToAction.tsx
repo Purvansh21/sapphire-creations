@@ -89,13 +89,24 @@ export const CTASection: React.FC<CTASectionProps> = ({
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <Parallax speed={0.05}>
-            {/* Empty blue box to replace the special offer section */}
             <div className="rounded-xl overflow-hidden relative shadow-2xl h-full">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-indigo-600/40 backdrop-blur-sm z-0"></div>
-              <div className="relative z-10 p-8 md:p-12 h-full flex items-center justify-center">
-                <div className="w-24 h-24 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center">
+              <div className="relative z-10 p-8 md:p-12 h-full flex flex-col items-center justify-center">
+                <div className="w-24 h-24 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center mb-6">
                   <div className="w-12 h-12 rounded-full bg-blue-500/40 backdrop-blur-md"></div>
                 </div>
+                
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4 text-center">
+                  Missed Our Special Offer? Don't Worry, We've Got More!
+                </h3>
+                
+                <p className="text-white/80 text-center mb-6">
+                  We may not be handing out freebies anymore, but we're still serving top-notch creativity freshly crafted, just like your nearest vegetable shop!
+                </p>
+                
+                <button className="px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full text-white transition-all duration-300 transform hover:scale-105">
+                  See Our Plans
+                </button>
               </div>
             </div>
           </Parallax>
