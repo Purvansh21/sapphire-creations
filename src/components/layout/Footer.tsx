@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { FadeIn } from '@/components/animations/FadeIn';
@@ -12,7 +11,6 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ className }) => {
   const currentYear = new Date().getFullYear();
   
-  // Updated footerLinks with the first column changed to match the services from FeatureShowcase
   const footerLinks = [
     {
       title: "Our Services",
@@ -26,24 +24,17 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
     },
     {
       title: "Company",
-      links: ["About Us", "Our Work", "Process", "Team", "Careers"]
-    },
-    {
-      title: "Resources",
-      links: ["Blog", "Design Tips", "Case Studies", "Brand Guide", "FAQs"]
+      links: ["About Us", "Our Work", "Process", "Team", "FAQs"]
     },
     {
       title: "Contact",
-      links: ["Get a Quote", "Support", "Partnership", "Privacy Policy", "Terms"]
+      links: ["Get a Quote", "Privacy Policy", "Terms"]
     }
   ];
 
-  // Function to handle service link clicks
   const handleServiceClick = (serviceId: number) => {
-    // Scroll to the services section
     const servicesSection = document.getElementById('services');
     if (servicesSection) {
-      // Add offset for header
       const headerOffset = 80;
       const elementPosition = servicesSection.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -53,14 +44,12 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
         behavior: 'smooth'
       });
       
-      // After scrolling, activate the respective service card
       setTimeout(() => {
-        // Create and dispatch a custom event to activate the service
         const event = new CustomEvent('activateService', { 
           detail: { serviceId } 
         });
         document.dispatchEvent(event);
-      }, 800); // Delay to allow smooth scrolling to complete
+      }, 800);
     }
   };
 
@@ -69,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <FadeIn className="col-span-2">
             <div>
               <a href="#" className="inline-block mb-4">
@@ -106,7 +95,6 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                 <h3 className="text-white font-medium mb-3 text-sm">{column.title}</h3>
                 <ul className="space-y-2">
                   {index === 0 ? (
-                    // Special rendering for the services column
                     (column.links as Array<{ name: string; serviceId: number }>).map((link) => (
                       <li key={link.name}>
                         <a 
@@ -122,7 +110,6 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                       </li>
                     ))
                   ) : (
-                    // Regular rendering for other columns
                     (column.links as string[]).map((link) => (
                       <li key={link}>
                         <a href="#" className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
