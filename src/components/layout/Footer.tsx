@@ -107,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                 <ul className="space-y-2">
                   {index === 0 ? (
                     // Special rendering for the services column
-                    column.links.map((link: any) => (
+                    (column.links as Array<{ name: string; serviceId: number }>).map((link) => (
                       <li key={link.name}>
                         <a 
                           href="#services" 
@@ -123,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                     ))
                   ) : (
                     // Regular rendering for other columns
-                    column.links.map((link: string) => (
+                    (column.links as string[]).map((link) => (
                       <li key={link}>
                         <a href="#" className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
                           {link}
