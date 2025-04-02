@@ -1,5 +1,5 @@
 
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Parallax } from '@/components/animations/Parallax';
 import { cn } from '@/lib/utils';
@@ -25,6 +25,23 @@ export const CTASection: React.FC<CTASectionProps> = ({
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const stickyCardRef = useRef<HTMLDivElement>(null);
+  
+  // Fix initial position on load and ensure correct positioning
+  useEffect(() => {
+    if (stickyCardRef.current) {
+      // Force a layout calculation on the first load
+      const height = stickyCardRef.current.offsetHeight;
+      console.log("Initial card height:", height);
+      
+      // Force a repaint to ensure proper positioning
+      setTimeout(() => {
+        if (stickyCardRef.current) {
+          stickyCardRef.current.style.transform = 'translateZ(0)';
+        }
+      }, 0);
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
@@ -89,31 +106,29 @@ export const CTASection: React.FC<CTASectionProps> = ({
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div className="h-full lg:sticky lg:top-24">
-            <Parallax speed={0.05}>
-              <div className="rounded-xl overflow-hidden relative shadow-2xl h-full flex">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-indigo-600/40 backdrop-blur-sm z-0"></div>
-                <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
-                  <div className="w-24 h-24 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center mb-8 mx-auto">
-                    <div className="w-12 h-12 rounded-full bg-blue-500/40 backdrop-blur-md"></div>
-                  </div>
-                  
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6 text-center">
-                    Missed Our Special Offer? Don't Worry, We've Got More!
-                  </h3>
-                  
-                  <p className="text-white/80 text-center mb-8">
-                    We may not be handing out freebies anymore, but we're still serving top-notch creativity freshly crafted, just like your nearest vegetable shop!
-                  </p>
-                  
-                  <Button 
-                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium rounded-lg transition-all transform hover:scale-[1.02] mt-auto mx-auto"
-                  >
-                    Get Quote
-                  </Button>
+          <div ref={stickyCardRef} className="h-full lg:sticky lg:top-24 will-change-transform">
+            <div className="rounded-xl overflow-hidden relative shadow-2xl h-full flex">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-indigo-600/40 backdrop-blur-sm z-0"></div>
+              <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
+                <div className="w-24 h-24 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center mb-8 mx-auto">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/40 backdrop-blur-md"></div>
                 </div>
+                
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6 text-center">
+                  Missed Our Special Offer? Don't Worry, We've Got More!
+                </h3>
+                
+                <p className="text-white/80 text-center mb-8">
+                  We may not be handing out freebies anymore, but we're still serving top-notch creativity freshly crafted, just like your nearest vegetable shop!
+                </p>
+                
+                <Button 
+                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium rounded-lg transition-all transform hover:scale-[1.02] mt-auto mx-auto"
+                >
+                  Get Quote
+                </Button>
               </div>
-            </Parallax>
+            </div>
           </div>
           
           <div>
