@@ -1,13 +1,17 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { cn } from '@/lib/utils';
+import { useAnimation } from '@/hooks/use-animation';
 
 interface Benefit {
   id: number;
   title: string;
   description: string;
   value: string;
+  countTo: number;
+  prefix?: string;
+  suffix?: string;
   metric: string;
   color: string;
 }
@@ -17,30 +21,80 @@ interface BenefitsSectionProps {
   id?: string;
 }
 
+const CountUpNumber = ({ 
+  end, 
+  prefix = "", 
+  suffix = "", 
+  duration = 2000 
+}: { 
+  end: number; 
+  prefix?: string; 
+  suffix?: string; 
+  duration?: number;
+}) => {
+  const [count, setCount] = useState(0);
+  const { elementRef, isVisible } = useAnimation({ triggerOnce: true });
+  
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    let startTime: number;
+    let animationFrameId: number;
+    
+    const startAnimation = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const currentCount = Math.floor(progress * end);
+      
+      setCount(currentCount);
+      
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(startAnimation);
+      }
+    };
+    
+    animationFrameId = requestAnimationFrame(startAnimation);
+    
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [end, duration, isVisible]);
+  
+  return <div ref={elementRef} className="text-4xl md:text-5xl font-display font-bold text-white mb-2">
+    {prefix}{count}{suffix}
+  </div>;
+};
+
 export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id }) => {
   const benefits: Benefit[] = [
     {
       id: 1,
-      title: "Productivity Boost",
-      description: "Streamline your processes and get more done in less time.",
-      value: "+32%",
-      metric: "productivity increase",
+      title: "Clients Served",
+      description: "Trusted by brands big and small because great design knows no size!",
+      value: "100+",
+      countTo: 100,
+      suffix: "+",
+      metric: "happy clients",
       color: "from-blue-500 to-blue-700"
     },
     {
       id: 2,
-      title: "Resource Optimization",
-      description: "Focus on what works and maximize your return on investment.",
-      value: "1.8x",
-      metric: "better resource use",
+      title: "Average ROI Increase",
+      description: "Smart strategies, better results because every rupee counts!",
+      value: "2.2x",
+      countTo: 2.2,
+      suffix: "x",
+      metric: "return on investment",
       color: "from-purple-500 to-purple-700"
     },
     {
       id: 3,
       title: "Client Satisfaction",
-      description: "Delivering tailored solutions that drive success and long-term relationships.",
-      value: "90%",
-      metric: "client satisfaction",
+      description: "Happy clients, successful brands — our track record speaks for itself!",
+      value: "98%",
+      countTo: 98,
+      suffix: "%",
+      metric: "satisfaction rate",
       color: "from-cyan-500 to-cyan-700"
     }
   ];
@@ -82,9 +136,11 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className, id 
                     {index === 2 && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />}
                   </svg>
                 </div>
-                <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2">
-                  {benefit.value}
-                </div>
+                <CountUpNumber 
+                  end={benefit.countTo} 
+                  prefix={benefit.prefix || ""} 
+                  suffix={benefit.suffix || ""} 
+                />
                 <div className="text-white/70 mb-4 text-sm uppercase tracking-wider">
                   {benefit.metric}
                 </div>
