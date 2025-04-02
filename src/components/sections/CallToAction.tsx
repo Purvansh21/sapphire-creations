@@ -88,31 +88,33 @@ export const CTASection: React.FC<CTASectionProps> = ({
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-t from-indigo-500/10 to-blue-500/5 blur-2xl rounded-full transform -translate-x-1/3 translate-y-1/3"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <Parallax speed={0.05}>
-            <div className="rounded-xl overflow-hidden relative shadow-2xl h-full flex">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-indigo-600/40 backdrop-blur-sm z-0"></div>
-              <div className="relative z-10 p-8 md:p-12 h-full flex flex-col items-center justify-center">
-                <div className="w-24 h-24 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center mb-8">
-                  <div className="w-12 h-12 rounded-full bg-blue-500/40 backdrop-blur-md"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="h-full lg:sticky lg:top-24">
+            <Parallax speed={0.05}>
+              <div className="rounded-xl overflow-hidden relative shadow-2xl h-full flex">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-indigo-600/40 backdrop-blur-sm z-0"></div>
+                <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
+                  <div className="w-24 h-24 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center mb-8 mx-auto">
+                    <div className="w-12 h-12 rounded-full bg-blue-500/40 backdrop-blur-md"></div>
+                  </div>
+                  
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6 text-center">
+                    Missed Our Special Offer? Don't Worry, We've Got More!
+                  </h3>
+                  
+                  <p className="text-white/80 text-center mb-8">
+                    We may not be handing out freebies anymore, but we're still serving top-notch creativity freshly crafted, just like your nearest vegetable shop!
+                  </p>
+                  
+                  <Button 
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium rounded-lg transition-all transform hover:scale-[1.02] mt-auto mx-auto"
+                  >
+                    Get Quote
+                  </Button>
                 </div>
-                
-                <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6 text-center">
-                  Missed Our Special Offer? Don't Worry, We've Got More!
-                </h3>
-                
-                <p className="text-white/80 text-center mb-8">
-                  We may not be handing out freebies anymore, but we're still serving top-notch creativity freshly crafted, just like your nearest vegetable shop!
-                </p>
-                
-                <Button 
-                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium rounded-lg transition-all transform hover:scale-[1.02]"
-                >
-                  Get Quote
-                </Button>
               </div>
-            </div>
-          </Parallax>
+            </Parallax>
+          </div>
           
           <div>
             <FadeIn direction="up">
