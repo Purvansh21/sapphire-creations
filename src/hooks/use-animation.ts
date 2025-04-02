@@ -49,7 +49,11 @@ export function useAnimation(options: UseAnimationOptions = {}) {
     };
   }, [threshold, rootMargin, triggerOnce]);
 
-  return { elementRef, shouldAnimate, isVisible, setRef: (el: HTMLElement | null) => { elementRef.current = el; } };
+  const setRef = (el: HTMLElement | null) => {
+    elementRef.current = el;
+  };
+
+  return { elementRef, shouldAnimate, isVisible, setRef };
 }
 
 export function useMousePosition() {

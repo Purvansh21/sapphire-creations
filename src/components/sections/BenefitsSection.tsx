@@ -33,7 +33,7 @@ const CountUpNumber = ({
   duration?: number;
 }) => {
   const [count, setCount] = useState(0);
-  const { elementRef, isVisible } = useAnimation({ triggerOnce: true });
+  const { isVisible, setRef } = useAnimation({ triggerOnce: true });
   
   useEffect(() => {
     if (!isVisible) return;
@@ -60,7 +60,7 @@ const CountUpNumber = ({
     };
   }, [end, duration, isVisible]);
   
-  return <div ref={elementRef} className="text-4xl md:text-5xl font-display font-bold text-white mb-2">
+  return <div ref={ref => setRef(ref)} className="text-4xl md:text-5xl font-display font-bold text-white mb-2">
     {prefix}{count}{suffix}
   </div>;
 };
