@@ -79,11 +79,14 @@ export function useParallaxEffect(speed = 0.1) {
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
     
-    // Calculate the distance from the center
-    const distanceX = (mousePosition.x - centerX) * speed;
-    const distanceY = (mousePosition.y - centerY) * speed;
-    
-    setOffset({ x: distanceX, y: distanceY });
+    // Calculate the distance from the center with a smoother movement
+    // Using requestAnimationFrame for smoother transition
+    requestAnimationFrame(() => {
+      const distanceX = (mousePosition.x - centerX) * speed;
+      const distanceY = (mousePosition.y - centerY) * speed;
+      
+      setOffset({ x: distanceX, y: distanceY });
+    });
   }, [mousePosition, speed]);
   
   return offset;

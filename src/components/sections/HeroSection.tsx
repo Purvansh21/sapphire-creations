@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { useParallaxEffect } from '@/hooks/use-animation';
@@ -10,7 +11,8 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
-  const parallaxOffset = useParallaxEffect(0.05);
+  // Increase the sensitivity by changing the multiplier from 0.05 to 0.08
+  const parallaxOffset = useParallaxEffect(0.08);
   const [scrollProgress, setScrollProgress] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   
@@ -75,7 +77,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
       <div 
         className="absolute w-[600px] h-[600px] pointer-events-none opacity-70"
         style={{
-          transform: `translate3d(${parallaxOffset.x * 0.5}px, ${parallaxOffset.y * 0.5}px, 0) rotateX(${parallaxOffset.y * 0.05}deg) rotateY(${-parallaxOffset.x * 0.05}deg)`,
+          // Increase the movement multiplier from 0.5 to 0.8 for more responsiveness
+          transform: `translate3d(${parallaxOffset.x * 0.8}px, ${parallaxOffset.y * 0.8}px, 0) rotateX(${parallaxOffset.y * 0.08}deg) rotateY(${-parallaxOffset.x * 0.08}deg)`,
           opacity: 1 - scrollProgress,
         }}
       >
