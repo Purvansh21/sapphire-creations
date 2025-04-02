@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Parallax } from '@/components/animations/Parallax';
 import { cn } from '@/lib/utils';
@@ -19,6 +18,33 @@ interface FeatureShowcaseProps {
 
 export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id }) => {
   const [activeService, setActiveService] = useState<number>(1);
+  
+  useEffect(() => {
+    // Listen for the custom event to activate a service
+    const activateServiceHandler = (event: CustomEvent<{ serviceId: number }>) => {
+      setActiveService(event.detail.serviceId);
+      
+      // Find the service card element
+      const serviceCard = document.querySelector(`[data-service-id="${event.detail.serviceId}"]`);
+      if (serviceCard) {
+        // Add a highlight animation
+        serviceCard.classList.add('animate-pulse');
+        
+        // Remove the animation class after it completes
+        setTimeout(() => {
+          serviceCard.classList.remove('animate-pulse');
+        }, 1500);
+      }
+    };
+    
+    // Add event listener
+    document.addEventListener('activateService', activateServiceHandler as EventListener);
+    
+    // Clean up
+    return () => {
+      document.removeEventListener('activateService', activateServiceHandler as EventListener);
+    };
+  }, []);
   
   const services: Service[] = [
     {
@@ -81,7 +107,6 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
         </div>
       )
     },
-    // More services rendered in three rows instead of two uneven ones
     {
       id: 7,
       title: "Content Marketing",
@@ -198,6 +223,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
               {servicesRow1.map((service) => (
                 <FadeIn key={service.id} direction="left" delay={service.id * 50}>
                   <div 
+                    data-service-id={service.id}
                     className={cn(
                       "p-4 rounded-xl cursor-pointer transition-all duration-300",
                       activeService === service.id 
@@ -229,6 +255,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
               {servicesRow2.map((service) => (
                 <FadeIn key={service.id} direction="left" delay={(service.id - 4) * 50}>
                   <div 
+                    data-service-id={service.id}
                     className={cn(
                       "p-4 rounded-xl cursor-pointer transition-all duration-300",
                       activeService === service.id 
@@ -260,6 +287,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
               {servicesRow3.map((service) => (
                 <FadeIn key={service.id} direction="left" delay={(service.id - 8) * 50}>
                   <div 
+                    data-service-id={service.id}
                     className={cn(
                       "p-4 rounded-xl cursor-pointer transition-all duration-300",
                       activeService === service.id 

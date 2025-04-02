@@ -12,10 +12,17 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ className }) => {
   const currentYear = new Date().getFullYear();
   
+  // Updated footerLinks with the first column changed to match the services from FeatureShowcase
   const footerLinks = [
     {
-      title: "Services",
-      links: ["Digital Marketing", "Business Marketing", "Social Media", "Search Marketing", "Content Marketing"]
+      title: "Our Services",
+      links: [
+        { name: "Logo Design", serviceId: 1 },
+        { name: "UI/UX Design", serviceId: 3 },
+        { name: "Website Design", serviceId: 4 },
+        { name: "Social Media Management", serviceId: 6 },
+        { name: "Content Marketing", serviceId: 7 }
+      ]
     },
     {
       title: "Company",
@@ -30,6 +37,32 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
       links: ["Get a Quote", "Support", "Partnership", "Privacy Policy", "Terms"]
     }
   ];
+
+  // Function to handle service link clicks
+  const handleServiceClick = (serviceId: number) => {
+    // Scroll to the services section
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      // Add offset for header
+      const headerOffset = 80;
+      const elementPosition = servicesSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      // After scrolling, activate the respective service card
+      setTimeout(() => {
+        // Create and dispatch a custom event to activate the service
+        const event = new CustomEvent('activateService', { 
+          detail: { serviceId } 
+        });
+        document.dispatchEvent(event);
+      }, 800); // Delay to allow smooth scrolling to complete
+    }
+  };
 
   return (
     <footer className={cn("bg-black text-white pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden", className)}>
@@ -72,13 +105,32 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
               <div>
                 <h3 className="text-white font-medium mb-3 text-sm">{column.title}</h3>
                 <ul className="space-y-2">
-                  {column.links.map((link) => (
-                    <li key={link}>
-                      <a href="#" className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
+                  {index === 0 ? (
+                    // Special rendering for the services column
+                    column.links.map((link: any) => (
+                      <li key={link.name}>
+                        <a 
+                          href="#services" 
+                          className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleServiceClick(link.serviceId);
+                          }}
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    ))
+                  ) : (
+                    // Regular rendering for other columns
+                    column.links.map((link: string) => (
+                      <li key={link}>
+                        <a href="#" className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm">
+                          {link}
+                        </a>
+                      </li>
+                    ))
+                  )}
                 </ul>
               </div>
             </FadeIn>
