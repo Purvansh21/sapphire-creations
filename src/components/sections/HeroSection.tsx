@@ -1,16 +1,18 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { useParallaxEffect } from '@/hooks/use-animation';
 import { cn } from '@/lib/utils';
 import { PenTool, Layout, Image } from 'lucide-react';
 import { Logo } from '@/components/ui/logo';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface HeroSectionProps {
   className?: string;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   // Increase the sensitivity by changing the multiplier from 0.05 to 0.08
   const parallaxOffset = useParallaxEffect(0.08);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -42,6 +44,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
     animationDelay: Math.random() * 5,
     animationDuration: Math.random() * 10 + 10,
   }));
+
+  const handleNavigation = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    if (href.startsWith('#')) {
+      if (location.pathname !== '/') {
+        navigate('/', { state: { scrollTo: href } });
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          const headerOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    } else {
+      navigate(href);
+    }
+  };
 
   return (
     <div 
@@ -108,10 +132,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
         
         <FadeIn delay={900} duration={1000}>
           <div className="flex flex-wrap gap-4 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            <button 
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              onClick={(e) => handleNavigation('#portfolio', e)}
+            >
               Explore Our Work
             </button>
-            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white rounded-full font-medium transition-all duration-300 border border-white/20">
+            <button 
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white rounded-full font-medium transition-all duration-300 border border-white/20"
+              onClick={(e) => handleNavigation('#contact', e)}
+            >
               Get In Touch
             </button>
           </div>

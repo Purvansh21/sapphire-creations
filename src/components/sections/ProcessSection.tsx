@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { cn } from '@/lib/utils';
@@ -64,18 +63,18 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ className, id })
         
         <div className="relative">
           {/* Connector Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500 to-indigo-500 hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-8 bottom-8 w-[2px] bg-gradient-to-b from-blue-500 via-indigo-500 to-blue-500 block z-0 opacity-80 shadow-glow"></div>
           
           <div className="space-y-16 md:space-y-24 relative">
             {steps.map((step, index) => (
               <FadeIn key={step.id} delay={index * 200}>
                 <div className={cn(
-                  "flex flex-col md:flex-row items-center",
+                  "flex flex-col md:flex-row items-center relative",
                   index % 2 === 1 ? "md:flex-row-reverse" : ""
                 )}>
                   <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
                     <div className="relative">
-                      {/* Step Number */}
+                      {/* Step Number with connection point to line */}
                       <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center relative z-10">
                         <span className="text-3xl md:text-4xl font-display font-bold text-white">{step.id}</span>
                       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Parallax } from '@/components/animations/Parallax';
 import { cn } from '@/lib/utils';
@@ -18,33 +18,39 @@ interface FeatureShowcaseProps {
 
 export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id }) => {
   const [activeService, setActiveService] = useState<number>(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
-  useEffect(() => {
-    // Listen for the custom event to activate a service
-    const activateServiceHandler = (event: CustomEvent<{ serviceId: number }>) => {
-      setActiveService(event.detail.serviceId);
-      
-      // Find the service card element
-      const serviceCard = document.querySelector(`[data-service-id="${event.detail.serviceId}"]`);
+  const handleServiceChange = useCallback((serviceId: number) => {
+    if (serviceId === activeService) return;
+    
+    setIsTransitioning(true);
+    setActiveService(serviceId);
+    
+    requestAnimationFrame(() => {
+      const serviceCard = document.querySelector(`[data-service-id="${serviceId}"]`);
       if (serviceCard) {
-        // Add a highlight animation
-        serviceCard.classList.add('animate-pulse');
-        
-        // Remove the animation class after it completes
-        setTimeout(() => {
-          serviceCard.classList.remove('animate-pulse');
-        }, 1500);
+        serviceCard.classList.remove('card-pulse');
+        void (serviceCard as HTMLElement).offsetWidth;
+        serviceCard.classList.add('card-pulse');
       }
+    });
+    
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 150);
+  }, [activeService]);
+
+  useEffect(() => {
+    const activateServiceHandler = (event: CustomEvent<{ serviceId: number }>) => {
+      handleServiceChange(event.detail.serviceId);
     };
     
-    // Add event listener
     document.addEventListener('activateService', activateServiceHandler as EventListener);
     
-    // Clean up
     return () => {
       document.removeEventListener('activateService', activateServiceHandler as EventListener);
     };
-  }, []);
+  }, [handleServiceChange]);
   
   const services: Service[] = [
     {
@@ -60,7 +66,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
     {
       id: 2,
       title: "Graphic Design",
-      description: "Stunning visuals for print, digital, and branding needs. Whether it's a sleek brochure or a meme-worthy social post, we design it all (yes, even that weird idea you have).",
+      description: "Eye-catching visuals that capture attention and communicate your message. We make designs that don't just look good—they work.",
       icon: (
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600 flex items-center justify-center">
           <Palette className="h-5 w-5 text-white" />
@@ -109,16 +115,6 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
     },
     {
       id: 7,
-      title: "Content Marketing",
-      description: "Blogs, copies, and creative content that captivate. Because \"lorem ipsum\" is not a content strategy.",
-      icon: (
-        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center">
-          <PenTool className="h-5 w-5 text-white" />
-        </div>
-      )
-    },
-    {
-      id: 8,
       title: "SEO & Search Marketing",
       description: "Rank higher, drive traffic, and increase visibility. We speak fluent Google so your brand gets the attention it deserves.",
       icon: (
@@ -128,7 +124,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
       )
     },
     {
-      id: 9,
+      id: 8,
       title: "Advertising & Promotions",
       description: "Campaigns that convert and boost brand awareness. Your ads should make people click, not cringe—we make that happen.",
       icon: (
@@ -138,7 +134,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
       )
     },
     {
-      id: 10,
+      id: 9,
       title: "Photo Editing",
       description: "High-quality retouching and enhancements. No over-editing, no fake perfection—just visuals that pop in the right way.",
       icon: (
@@ -148,7 +144,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
       )
     },
     {
-      id: 11,
+      id: 10,
       title: "Video Editing",
       description: "Engaging, professional edits for social media and marketing. Because shaky, low-quality videos are only acceptable in found-footage horror films.",
       icon: (
@@ -165,7 +161,11 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
   const servicesRow3 = services.slice(8);
 
   return (
-    <div id={id} className={cn("py-24 px-6 md:px-10 bg-gradient-to-b from-black to-blue-950", className)}>
+    <div id={id} className={cn(
+      "py-24 px-6 md:px-10 bg-gradient-to-b from-black to-blue-950",
+      className,
+      isTransitioning && "pointer-events-none"
+    )}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <FadeIn direction="up">
@@ -174,7 +174,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
             </div>
           </FadeIn>
           <FadeIn direction="up" delay={200}>
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white tracking-tight will-change-transform">
               Creative Solutions We Offer
             </h2>
           </FadeIn>
@@ -186,7 +186,7 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
           </FadeIn>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             <Parallax speed={0.05}>
               <div className="relative h-[500px] rounded-xl overflow-hidden bg-gradient-to-br from-blue-500/10 to-indigo-500/10 backdrop-blur-sm border border-white/10 shadow-2xl">
@@ -194,8 +194,9 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
                   <div 
                     key={service.id}
                     className={cn(
-                      "absolute inset-0 flex items-center justify-center transition-opacity duration-500",
-                      activeService === service.id ? "opacity-100" : "opacity-0 pointer-events-none"
+                      "absolute inset-0 flex items-center justify-center transition-all duration-300",
+                      activeService === service.id ? "opacity-100" : "opacity-0 pointer-events-none",
+                      isTransitioning && "transform-none"
                     )}
                   >
                     <div className="p-8 text-center">
@@ -219,29 +220,30 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
           
           <div className="space-y-4">
             {/* First row of services */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 auto-rows-fr">
               {servicesRow1.map((service) => (
-                <FadeIn key={service.id} direction="left" delay={service.id * 50}>
+                <FadeIn key={service.id} direction="left" delay={service.id * 50} threshold={0.1}>
                   <div 
                     data-service-id={service.id}
                     className={cn(
-                      "p-4 rounded-xl cursor-pointer transition-all duration-300",
+                      "p-4 rounded-xl cursor-pointer transition-all duration-200 h-full flex flex-col",
                       activeService === service.id 
                         ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transform scale-105" 
-                        : "hover:bg-white/5 border border-transparent"
+                        : "hover:bg-white/5 border border-transparent hover:border-white/10",
+                      "hover:transform hover:scale-102 active:scale-98 animate-on-scroll",
                     )}
-                    onClick={() => setActiveService(service.id)}
+                    onClick={() => handleServiceChange(service.id)}
                   >
-                    <div className="flex items-start">
+                    <div className="flex items-start flex-1">
                       <div className="flex-shrink-0 mr-3">
                         {service.icon}
                       </div>
-                      <div>
-                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1 truncate">
                           {service.title}
                         </h3>
-                        <p className="text-white/70 text-sm">
-                          {service.description.substring(0, 60)}...
+                        <p className="text-white/70 text-sm line-clamp-2 overflow-hidden">
+                          {service.description}
                         </p>
                       </div>
                     </div>
@@ -251,29 +253,30 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
             </div>
             
             {/* Second row of services */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 auto-rows-fr">
               {servicesRow2.map((service) => (
-                <FadeIn key={service.id} direction="left" delay={(service.id - 4) * 50}>
+                <FadeIn key={service.id} direction="left" delay={(service.id - 4) * 50} threshold={0.1}>
                   <div 
                     data-service-id={service.id}
                     className={cn(
-                      "p-4 rounded-xl cursor-pointer transition-all duration-300",
+                      "p-4 rounded-xl cursor-pointer transition-all duration-200 h-full flex flex-col",
                       activeService === service.id 
                         ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transform scale-105" 
-                        : "hover:bg-white/5 border border-transparent"
+                        : "hover:bg-white/5 border border-transparent hover:border-white/10",
+                      "hover:transform hover:scale-102 active:scale-98 animate-on-scroll",
                     )}
-                    onClick={() => setActiveService(service.id)}
+                    onClick={() => handleServiceChange(service.id)}
                   >
-                    <div className="flex items-start">
+                    <div className="flex items-start flex-1">
                       <div className="flex-shrink-0 mr-3">
                         {service.icon}
                       </div>
-                      <div>
-                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1 truncate">
                           {service.title}
                         </h3>
-                        <p className="text-white/70 text-sm">
-                          {service.description.substring(0, 60)}...
+                        <p className="text-white/70 text-sm line-clamp-2 overflow-hidden">
+                          {service.description}
                         </p>
                       </div>
                     </div>
@@ -283,29 +286,30 @@ export const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ className, id 
             </div>
             
             {/* Third row of services */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 auto-rows-fr">
               {servicesRow3.map((service) => (
-                <FadeIn key={service.id} direction="left" delay={(service.id - 8) * 50}>
+                <FadeIn key={service.id} direction="left" delay={(service.id - 8) * 50} threshold={0.1}>
                   <div 
                     data-service-id={service.id}
                     className={cn(
-                      "p-4 rounded-xl cursor-pointer transition-all duration-300",
+                      "p-4 rounded-xl cursor-pointer transition-all duration-200 h-full flex flex-col",
                       activeService === service.id 
                         ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transform scale-105" 
-                        : "hover:bg-white/5 border border-transparent"
+                        : "hover:bg-white/5 border border-transparent hover:border-white/10",
+                      "hover:transform hover:scale-102 active:scale-98 animate-on-scroll",
                     )}
-                    onClick={() => setActiveService(service.id)}
+                    onClick={() => handleServiceChange(service.id)}
                   >
-                    <div className="flex items-start">
+                    <div className="flex items-start flex-1">
                       <div className="flex-shrink-0 mr-3">
                         {service.icon}
                       </div>
-                      <div>
-                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base lg:text-lg font-display font-semibold text-white mb-1 truncate">
                           {service.title}
                         </h3>
-                        <p className="text-white/70 text-sm">
-                          {service.description.substring(0, 60)}...
+                        <p className="text-white/70 text-sm line-clamp-2 overflow-hidden">
+                          {service.description}
                         </p>
                       </div>
                     </div>

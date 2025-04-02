@@ -1,5 +1,4 @@
-
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface FadeInProps {
@@ -11,6 +10,7 @@ interface FadeInProps {
   distance?: number;
   threshold?: number;
   once?: boolean;
+  rootMargin?: string;
 }
 
 export const FadeIn: React.FC<FadeInProps> = ({
@@ -22,9 +22,11 @@ export const FadeIn: React.FC<FadeInProps> = ({
   distance = 20,
   threshold = 0.1,
   once = true,
+  rootMargin = '0px',
 }) => {
   const elementRef = useRef<HTMLDivElement>(null);
   const observedRef = useRef<boolean>(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const element = elementRef.current;
@@ -41,32 +43,23 @@ export const FadeIn: React.FC<FadeInProps> = ({
         }
       };
 
-      // Set initial styles
-      element.style.opacity = '0';
-      element.style.transform = getTransform();
-      element.style.transition = `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`;
-      element.style.transitionDelay = `${delay}ms`;
-      element.style.willChange = 'opacity, transform';
-
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && (!once || !observedRef.current)) {
-              element.style.opacity = '1';
-              element.style.transform = 'none';
+              setIsVisible(true);
               observedRef.current = true;
               
               if (once) {
                 observer.unobserve(element);
               }
             } else if (!entry.isIntersecting && !once && observedRef.current) {
-              element.style.opacity = '0';
-              element.style.transform = getTransform();
+              setIsVisible(false);
               observedRef.current = false;
             }
           });
         },
-        { threshold }
+        { threshold, rootMargin }
       );
 
       observer.observe(element);
@@ -75,10 +68,24 @@ export const FadeIn: React.FC<FadeInProps> = ({
         observer.unobserve(element);
       };
     }
-  }, [direction, distance, duration, delay, threshold, once]);
+  }, [direction, distance, duration, delay, threshold, once, rootMargin]);
 
   return (
-    <div ref={elementRef} className={cn(className)}>
+    <div 
+      ref={elementRef} 
+      className={cn(className, "will-change-transform will-change-opacity")}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'none' : direction === 'up' ? `translateY(${distance}px)` :
+                                      direction === 'down' ? `translateY(-${distance}px)` :
+                                      direction === 'left' ? `translateX(${distance}px)` :
+                                      direction === 'right' ? `translateX(-${distance}px)` : 'none',
+        transition: `opacity ${duration}ms cubic-bezier(0.25, 0.1, 0.25, 1), transform ${duration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
+        transitionDelay: `${delay}ms`,
+        willChange: 'opacity, transform',
+        visibility: isVisible ? 'visible' : 'hidden'
+      }}
+    >
       {children}
     </div>
   );

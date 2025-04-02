@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { cn } from '@/lib/utils';
@@ -44,9 +43,15 @@ const CountUpNumber = ({
     const startAnimation = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      const currentCount = Math.floor(progress * end);
       
-      setCount(currentCount);
+      // Handle decimal numbers for ROI counter
+      if (end === 2.2) {
+        const currentCount = (progress * end).toFixed(1);
+        setCount(parseFloat(currentCount));
+      } else {
+        const currentCount = Math.floor(progress * end);
+        setCount(currentCount);
+      }
       
       if (progress < 1) {
         animationFrameId = requestAnimationFrame(startAnimation);
