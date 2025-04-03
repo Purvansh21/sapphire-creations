@@ -10,6 +10,9 @@ import Terms from "./pages/Terms";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import AllProjects from "./pages/AllProjects";
+import AboutUs from "./pages/AboutUs";
+import Team from "./pages/Team";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +26,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/all-projects" element={<AllProjects />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/team" element={<Team />} />
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />

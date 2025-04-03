@@ -67,7 +67,8 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
   };
 
   const navItems = [
-    {label: "About Us", href: "#about"}, 
+    {label: "About Us", href: "/about"}, 
+    {label: "Team", href: "/team"},
     {label: "Services", href: "#services"}, 
     {label: "Portfolio", href: "#portfolio"}, 
     {label: "Process", href: "#process"}, 
