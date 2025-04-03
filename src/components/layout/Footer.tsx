@@ -28,10 +28,10 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
     {
       title: "Company",
       links: [
-        { name: "About Us", href: "#about" },
+        { name: "About Us", href: "/about" },
         { name: "Our Work", href: "#portfolio" },
         { name: "Process", href: "#process" },
-        { name: "Team", href: "#about" },
+        { name: "Team", href: "/team" },
         { name: "FAQs", href: "/faqs" }
       ]
     },

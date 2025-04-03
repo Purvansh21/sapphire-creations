@@ -46,7 +46,17 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
     e.preventDefault();
     setMobileMenuOpen(false);
 
-    if (href.startsWith('#')) {
+    if (href === '/') {
+      if (location.pathname === '/') {
+        // If we're already on the home page, scroll to top
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      } else {
+        navigate('/');
+      }
+    } else if (href.startsWith('#')) {
       if (location.pathname !== '/') {
         navigate('/', { state: { scrollTo: href } });
       } else {
