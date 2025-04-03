@@ -8,7 +8,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Live Concert Coverage',
         desc: 'Professional photography from live music events',
-        url: '/portfolio/concerts/463.jpg',
+        url: '/portfolio/concerts/463.webp',
         category: 'concerts',
         span: 'md:col-span-2 md:row-span-2',
         dateAdded: new Date('2024-03-01')
@@ -18,7 +18,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Concert Stage Performance',
         desc: 'Capturing the energy of live performances',
-        url: '/portfolio/concerts/447.jpg',
+        url: '/portfolio/concerts/447.webp',
         category: 'concerts',
         span: 'md:col-span-1 md:row-span-2',
         dateAdded: new Date('2024-03-02')
@@ -28,7 +28,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Music Festival Highlights',
         desc: 'Dynamic festival atmosphere and performances',
-        url: '/portfolio/concerts/440.jpg',
+        url: '/portfolio/concerts/440.webp',
         category: 'concerts',
         span: 'md:col-span-1',
         dateAdded: new Date('2024-03-03')
@@ -38,7 +38,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Concert Crowd Experience',
         desc: 'Capturing audience engagement and excitement',
-        url: '/portfolio/concerts/400.jpg',
+        url: '/portfolio/concerts/400.webp',
         category: 'concerts',
         span: 'md:col-span-1',
         dateAdded: new Date('2024-03-04')
@@ -48,7 +48,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Stage Production',
         desc: 'Showcasing professional stage and lighting setups',
-        url: '/portfolio/concerts/370.jpg',
+        url: '/portfolio/concerts/370.webp',
         category: 'concerts',
         span: 'md:col-span-2 md:row-span-2',
         dateAdded: new Date('2024-03-05')
@@ -58,7 +58,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Artist Performance',
         desc: 'Intimate moments from live performances',
-        url: '/portfolio/concerts/332.jpg',
+        url: '/portfolio/concerts/332.webp',
         category: 'concerts',
         span: 'md:col-span-1',
         dateAdded: new Date('2024-03-06')
@@ -68,7 +68,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Concert Venue Setup',
         desc: 'Professional venue and equipment documentation',
-        url: '/portfolio/concerts/287.jpg',
+        url: '/portfolio/concerts/287.webp',
         category: 'concerts',
         span: 'md:col-span-1',
         dateAdded: new Date('2024-03-07')
@@ -78,7 +78,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Live Music Photography',
         desc: 'Capturing the essence of live music',
-        url: '/portfolio/concerts/142.jpg',
+        url: '/portfolio/concerts/142.webp',
         category: 'concerts',
         span: 'md:col-span-1',
         dateAdded: new Date('2024-03-08')
@@ -88,7 +88,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Concert Atmosphere',
         desc: 'The magic of live concert environments',
-        url: '/portfolio/concerts/61.jpg',
+        url: '/portfolio/concerts/61.webp',
         category: 'concerts',
         span: 'md:col-span-1',
         dateAdded: new Date('2024-03-09')
@@ -98,7 +98,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Stage Design',
         desc: 'Creative stage and lighting design',
-        url: '/portfolio/concerts/37.jpg',
+        url: '/portfolio/concerts/37.webp',
         category: 'concerts',
         span: 'md:col-span-1',
         dateAdded: new Date('2024-03-10')
@@ -108,7 +108,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Concert Production',
         desc: 'Behind the scenes of concert production',
-        url: '/portfolio/concerts/14.jpg',
+        url: '/portfolio/concerts/14.webp',
         category: 'concerts',
         span: 'md:col-span-1',
         dateAdded: new Date('2024-03-11')
@@ -170,7 +170,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Bar Atmosphere',
         desc: 'Capturing the perfect nightlife ambiance',
-        url: '/portfolio/bars/131.jpg',
+        url: '/portfolio/bars/131.webp',
         category: 'bars',
         span: 'md:col-span-2 md:row-span-2',
         dateAdded: new Date('2024-03-11')
@@ -180,7 +180,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Bar Project 2',
         desc: 'Upscale cocktail lounge branding',
-        url: '/portfolio/bars/97.jpg',
+        url: '/portfolio/bars/97.webp',
         category: 'bars',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -190,7 +190,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Bar Project 3',
         desc: 'Modern bar interior visualization',
-        url: '/portfolio/bars/94.jpg',
+        url: '/portfolio/bars/94.webp',
         category: 'bars',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -200,7 +200,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Bar Project 4',
         desc: 'Bar website with menu showcase',
-        url: '/portfolio/bars/62.jpg',
+        url: '/portfolio/bars/62.webp',
         category: 'bars',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -210,7 +210,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Bar Project 5',
         desc: 'Nightclub promotional materials',
-        url: '/portfolio/bars/61.jpg',
+        url: '/portfolio/bars/61.webp',
         category: 'bars',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -220,7 +220,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Bar Project 6',
         desc: 'Pub identity and signage design',
-        url: '/portfolio/bars/59.jpg',
+        url: '/portfolio/bars/59.webp',
         category: 'bars',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -231,7 +231,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Restaurant Interior',
         desc: 'Showcasing the dining experience',
-        url: '/portfolio/restaurants/1.png',
+        url: '/portfolio/restaurants/1.webp',
         category: 'restaurants',
         span: 'md:col-span-2 md:row-span-2',
         dateAdded: new Date('2024-03-19')
@@ -241,7 +241,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Restaurant Project 2',
         desc: 'Fine dining website design',
-        url: '/portfolio/restaurants/2.png',
+        url: '/portfolio/restaurants/2.webp',
         category: 'restaurants',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -251,7 +251,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Restaurant Project 3',
         desc: 'Restaurant menu design system',
-        url: '/portfolio/restaurants/3.png',
+        url: '/portfolio/restaurants/3.webp',
         category: 'restaurants',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -262,7 +262,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 1',
         desc: 'Luxury spa branding design',
-        url: '/portfolio/spas-and-salons/4.png',
+        url: '/portfolio/spas-and-salons/4.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -272,7 +272,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 2',
         desc: 'Beauty salon website interface',
-        url: '/portfolio/spas-and-salons/7.png',
+        url: '/portfolio/spas-and-salons/7.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -282,7 +282,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 3',
         desc: 'Wellness center identity',
-        url: '/portfolio/spas-and-salons/8.png',
+        url: '/portfolio/spas-and-salons/8.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -292,7 +292,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 4',
         desc: 'Salon booking system design',
-        url: '/portfolio/spas-and-salons/12.png',
+        url: '/portfolio/spas-and-salons/12.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -302,7 +302,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 5',
         desc: 'Spa promotional materials',
-        url: '/portfolio/spas-and-salons/14.png',
+        url: '/portfolio/spas-and-salons/14.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -312,7 +312,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 6',
         desc: 'Luxury wellness experience design',
-        url: '/portfolio/spas-and-salons/16.png',
+        url: '/portfolio/spas-and-salons/16.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -322,7 +322,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 7',
         desc: 'Modern spa interior concept',
-        url: '/portfolio/spas-and-salons/18.png',
+        url: '/portfolio/spas-and-salons/18.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -332,7 +332,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 8',
         desc: 'Salon service showcase',
-        url: '/portfolio/spas-and-salons/25.png',
+        url: '/portfolio/spas-and-salons/25.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -342,7 +342,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 9',
         desc: 'Wellness brand identity',
-        url: '/portfolio/spas-and-salons/26.png',
+        url: '/portfolio/spas-and-salons/26.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -352,7 +352,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 10',
         desc: 'Spa treatment menu design',
-        url: '/portfolio/spas-and-salons/36.png',
+        url: '/portfolio/spas-and-salons/36.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -362,7 +362,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 11',
         desc: 'Beauty center branding',
-        url: '/portfolio/spas-and-salons/54.png',
+        url: '/portfolio/spas-and-salons/54.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -372,7 +372,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 12',
         desc: 'Wellness app interface',
-        url: '/portfolio/spas-and-salons/57.png',
+        url: '/portfolio/spas-and-salons/57.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -382,7 +382,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Spa & Salon Project 13',
         desc: 'Luxury spa marketing',
-        url: '/portfolio/spas-and-salons/61.png',
+        url: '/portfolio/spas-and-salons/61.webp',
         category: 'spas-and-salons',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -393,7 +393,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 1',
         desc: 'Travel agency website design',
-        url: '/portfolio/travel-agencies/4.png',
+        url: '/portfolio/travel-agencies/4.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -403,7 +403,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 2',
         desc: 'Adventure tour branding',
-        url: '/portfolio/travel-agencies/6.png',
+        url: '/portfolio/travel-agencies/6.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -413,7 +413,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 3',
         desc: 'Travel booking interface',
-        url: '/portfolio/travel-agencies/9.png',
+        url: '/portfolio/travel-agencies/9.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -423,7 +423,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 4',
         desc: 'Tourism marketing materials',
-        url: '/portfolio/travel-agencies/10.png',
+        url: '/portfolio/travel-agencies/10.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -433,7 +433,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 5',
         desc: 'Destination guide design',
-        url: '/portfolio/travel-agencies/11.png',
+        url: '/portfolio/travel-agencies/11.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -443,7 +443,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 6',
         desc: 'Travel experience showcase',
-        url: '/portfolio/travel-agencies/14.png',
+        url: '/portfolio/travel-agencies/14.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -453,7 +453,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 7',
         desc: 'Adventure tourism branding',
-        url: '/portfolio/travel-agencies/17.png',
+        url: '/portfolio/travel-agencies/17.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -463,7 +463,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 8',
         desc: 'Travel package design',
-        url: '/portfolio/travel-agencies/32.png',
+        url: '/portfolio/travel-agencies/32.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -473,7 +473,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 9',
         desc: 'Luxury travel branding',
-        url: '/portfolio/travel-agencies/34.png',
+        url: '/portfolio/travel-agencies/34.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -483,7 +483,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 10',
         desc: 'Travel agency identity',
-        url: '/portfolio/travel-agencies/37.png',
+        url: '/portfolio/travel-agencies/37.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -493,7 +493,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 11',
         desc: 'Tourism website design',
-        url: '/portfolio/travel-agencies/39.png',
+        url: '/portfolio/travel-agencies/39.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -503,7 +503,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Travel Agency Project 12',
         desc: 'Travel booking platform',
-        url: '/portfolio/travel-agencies/42.png',
+        url: '/portfolio/travel-agencies/42.webp',
         category: 'travel-agencies',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -514,7 +514,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Real Estate Project 1',
         desc: 'Luxury property showcase',
-        url: '/portfolio/real-estate/85.png',
+        url: '/portfolio/real-estate/85.webp',
         category: 'real-estate',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -524,7 +524,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Real Estate Project 2',
         desc: 'Real estate agency branding',
-        url: '/portfolio/real-estate/84.png',
+        url: '/portfolio/real-estate/84.webp',
         category: 'real-estate',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -534,7 +534,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Real Estate Project 3',
         desc: 'Property listing platform',
-        url: '/portfolio/real-estate/82.png',
+        url: '/portfolio/real-estate/82.webp',
         category: 'real-estate',
         span: 'md:col-span-1',
         dateAdded: new Date()
@@ -544,7 +544,7 @@ const mockProjects: ProjectItem[] = [
         type: 'image',
         title: 'Real Estate Project 4',
         desc: 'Virtual tour interface',
-        url: '/portfolio/real-estate/75.png',
+        url: '/portfolio/real-estate/75.webp',
         category: 'real-estate',
         span: 'md:col-span-1',
         dateAdded: new Date()
