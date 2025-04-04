@@ -46,6 +46,19 @@ export const ProductIntro: React.FC<ProductIntroProps> = ({ className, id }) => 
     }, 800); // Match this with your animation duration
   }, [navigate, location.pathname, isNavigating]);
 
+  const handleProcessClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsNavigating(true);
+    navigate('/');
+    setTimeout(() => {
+      const processSection = document.getElementById('process');
+      if (processSection) {
+        processSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      setIsNavigating(false);
+    }, 500);
+  };
+
   return (
     <div id={id} className={cn(
       "py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-10 relative overflow-hidden bg-black",
@@ -91,7 +104,7 @@ export const ProductIntro: React.FC<ProductIntroProps> = ({ className, id }) => 
               
               <FadeIn duration={1000}>
                 <button 
-                  onClick={(e) => handleNavigation('#process', e)}
+                  onClick={handleProcessClick}
                   disabled={isNavigating}
                   className={cn(
                     "px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm sm:text-base rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl",
