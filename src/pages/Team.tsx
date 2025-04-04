@@ -12,58 +12,50 @@ interface TeamMember {
     role: string;
     description: string;
     image: string;
-    isFounder?: boolean;
 }
 
 const teamMembers: TeamMember[] = [
     {
         name: "Kshitij",
-        role: "Video Editor & Founder",
+        role: "Video Editor",
         description: "I edit videos, design graphics, and—most importantly—I'm the founder. How do I know? Because my name is on top. If anyone else claims to be the founder, don't fall for their lies.",
-        image: "https://media.giphy.com/media/13GIgrGdslD9oQ/giphy.gif",
-        isFounder: true
+        image: "https://media.giphy.com/media/13GIgrGdslD9oQ/giphy.gif"
     },
     {
         name: "Kamesh",
-        role: "Graphic Designer & Founder",
+        role: "Graphic Designer",
         description: "No, I am the founder. Just because someone's name is written first doesn't mean they own the place! Also, I do graphic designing when I'm not busy correcting misinformation.",
-        image: "https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif",
-        isFounder: true
+        image: "https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif"
     },
     {
         name: "Prakhar",
         role: "Photo Editor & Video Editor",
         description: "The world's best photo editor (in my area). Also, I'm interning under Kshitij and Aman for video editing, but deep down, I know I edit better than them. One day, the world will see the truth.",
-        image: "https://media.giphy.com/media/11KzOet1ElBDz2/giphy.gif",
-        isFounder: false
+        image: "https://media.giphy.com/media/11KzOet1ElBDz2/giphy.gif"
     },
     {
         name: "Aryan",
         role: "Web Developer",
         description: "The best web developer in this team. Don't believe me? Ask Puru - I taught him everything he knows. If he says otherwise, he's just being dramatic.",
-        image: "https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif",
-        isFounder: false
+        image: "https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif"
     },
     {
         name: "Puru",
         role: "Web Developer",
         description: "Lies! I am the best web developer! Aryan was my student, and now he's trying to claim credit. Don't trust him. Web development is my domain.",
-        image: "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-        isFounder: false
+        image: "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif"
     },
     {
         name: "Aman",
         role: "Video Editor & E-commerce Developer",
         description: "I do video editing and specialize in e-commerce web development. Ignore the drama—I am the real expert here. They're all just fighting over second place.",
-        image: "https://media.giphy.com/media/5wWf7H89PisM6An8UAU/giphy.gif",
-        isFounder: false
+        image: "https://media.giphy.com/media/5wWf7H89PisM6An8UAU/giphy.gif"
     },
     {
         name: "Utkarsh",
-        role: "Content Writer & Founder",
+        role: "Content Writer",
         description: "I do nothing except endless Instagram and YouTube scrolling. But since I'm the only content writer here, that technically counts as 'research.' Also, I am the founder. My proof? I scroll all day—what more do you need?",
-        image: "https://media.giphy.com/media/5wWf7GR2nhgamhRnEuA/giphy.gif",
-        isFounder: true
+        image: "https://media.giphy.com/media/5wWf7GR2nhgamhRnEuA/giphy.gif"
     }
 ];
 
@@ -119,17 +111,13 @@ const Team = () => {
                                     <div className="absolute bottom-0 left-0 right-0 p-6">
                                         <h3 className="text-xl font-bold text-white">{member.name}</h3>
                                         <p className="text-primary">{member.role}</p>
-                                        {member.isFounder && (
-                                            <span className="inline-block mt-2 px-3 py-1 text-xs font-semibold bg-primary/20 text-primary rounded-full">
-                                                Founder
-                                            </span>
-                                        )}
                                     </div>
                                 </div>
                                 <img
                                     src={member.image}
                                     alt={member.name}
                                     className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                                    onContextMenu={(e) => e.preventDefault()}
                                 />
                             </div>
                         </motion.div>
@@ -157,6 +145,7 @@ const Team = () => {
                                     src={selectedMember.image}
                                     alt={selectedMember.name}
                                     className="w-full h-full object-cover"
+                                    onContextMenu={(e) => e.preventDefault()}
                                 />
                             </div>
                             <div className="p-6">
@@ -165,11 +154,6 @@ const Team = () => {
                                         <h2 className="text-2xl font-bold">{selectedMember.name}</h2>
                                         <p className="text-primary">{selectedMember.role}</p>
                                     </div>
-                                    {selectedMember.isFounder && (
-                                        <span className="px-3 py-1 text-sm font-semibold bg-primary/20 text-primary rounded-full">
-                                            Founder
-                                        </span>
-                                    )}
                                 </div>
                                 <p className="text-gray-300">{selectedMember.description}</p>
                             </div>
