@@ -25,7 +25,7 @@ const teamMembers: TeamMember[] = [
         name: "Kamesh",
         role: "Graphic Designer",
         description: "No, I am the founder. Just because someone's name is written first doesn't mean they own the place! Also, I do graphic designing when I'm not busy correcting misinformation.",
-        image: "https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif"
+        image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3BuZTl0M3hnM3RwMGx4bHczdmFzeGxjamxidXRrYjFzd3o0Z2x6eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5WJ6K7XnP2K2p3VWft/giphy.gif"
     },
     {
         name: "Prakhar",
