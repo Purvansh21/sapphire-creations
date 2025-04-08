@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Accordion,
@@ -40,7 +39,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
   supportDescription = "Our team is ready to help bring your vision to life.",
   supportButtonText = "Contact Our Team",
   supportButtonUrl = "#contact",
-  emailTo = "support@yourdomain.com", // Default email to send questions to
+  emailTo = "utkarsh.yadav5029@gmail.com", // Default email to send questions to
 }) => {
   const [contactFormOpen, setContactFormOpen] = useState(false);
 

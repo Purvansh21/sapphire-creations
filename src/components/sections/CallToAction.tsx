@@ -1,10 +1,22 @@
-
 import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Parallax } from '@/components/animations/Parallax';
 import { cn } from '@/lib/utils';
 import { useToast } from "@/hooks/use-toast";
 import { Button } from '@/components/ui/button';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+// Form validation schema
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
+  email: z.string().email({ message: 'Please enter a valid email address' }),
+  service: z.string().optional(),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters' }).optional(),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 interface CTASectionProps {
   className?: string;
@@ -15,26 +27,28 @@ interface CTASectionProps {
 export const CTASection: React.FC<CTASectionProps> = ({ 
   className, 
   id,
-  emailTo = "support@yourdomain.com" // Default email to send form submissions to
+  emailTo = "utkarsh.yadav5029@gmail.com"
 }) => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    service: '',
-    message: ''
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const stickyCardRef = useRef<HTMLDivElement>(null);
+  const lastSubmissionTime = useRef<number>(0);
+  const RATE_LIMIT_MS = 60000; // 1 minute rate limit
+  
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      service: '',
+      message: ''
+    }
+  });
   
   // Fix initial position on load and ensure correct positioning
   useEffect(() => {
     if (stickyCardRef.current) {
-      // Force a layout calculation on the first load
       const height = stickyCardRef.current.offsetHeight;
-      console.log("Initial card height:", height);
-      
-      // Force a repaint to ensure proper positioning
       setTimeout(() => {
         if (stickyCardRef.current) {
           stickyCardRef.current.style.transform = 'translateZ(0)';
@@ -43,48 +57,49 @@ export const CTASection: React.FC<CTASectionProps> = ({
     }
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { id, value } = e.target;
-    setFormData(prev => ({ ...prev, [id]: value }));
-  };
+  const handleSubmit = async (data: FormData) => {
+    // Rate limiting check
+    const now = Date.now();
+    if (now - lastSubmissionTime.current < RATE_LIMIT_MS) {
+      toast({
+        title: "Please wait",
+        description: "You can submit another form in a minute.",
+        variant: "destructive",
+      });
+      return;
+    }
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
     setIsSubmitting(true);
+    lastSubmissionTime.current = now;
 
     try {
-      // Validate form
-      if (!formData.name || !formData.email || !formData.message) {
-        toast({
-          title: "Missing information",
-          description: "Please fill out all required fields.",
-          variant: "destructive",
-        });
-        setIsSubmitting(false);
-        return;
-      }
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'c8d8f7eb-39f1-4cf8-b2a7-91adcc976b76',
+          name: data.name,
+          email: data.email,
+          message: data.message || 'Newsletter subscription request',
+          botcheck: '', // Honeypot field
+        })
+      });
 
-      // Log the submission data (in a real app, you'd send this to your server)
-      console.log("Form submitted with data:", formData);
-      console.log("Will be sent to:", emailTo);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For actual implementation, you'd use a service like EmailJS, Zapier, or a custom backend
-      
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-      });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        service: '',
-        message: ''
-      });
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        form.reset();
+      } else {
+        console.error("Form submission failed:", result);
+        throw new Error(result.message || 'Something went wrong with the form submission');
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
@@ -144,7 +159,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
             </FadeIn>
             
             <FadeIn delay={300}>
-              <form className="space-y-4" onSubmit={handleSubmit}>
+              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-white/80 text-sm">Your Name</label>
@@ -153,9 +168,11 @@ export const CTASection: React.FC<CTASectionProps> = ({
                       id="name" 
                       className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors" 
                       placeholder="John Doe"
-                      value={formData.name}
-                      onChange={handleChange}
+                      {...form.register('name')}
                     />
+                    {form.formState.errors.name && (
+                      <p className="text-red-400 text-sm">{form.formState.errors.name.message}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-white/80 text-sm">Email Address</label>
@@ -164,9 +181,11 @@ export const CTASection: React.FC<CTASectionProps> = ({
                       id="email" 
                       className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors" 
                       placeholder="john@example.com"
-                      value={formData.email}
-                      onChange={handleChange}
+                      {...form.register('email')}
                     />
+                    {form.formState.errors.email && (
+                      <p className="text-red-400 text-sm">{form.formState.errors.email.message}</p>
+                    )}
                   </div>
                 </div>
                 
@@ -175,8 +194,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                   <select 
                     id="service" 
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors appearance-none" 
-                    value={formData.service}
-                    onChange={handleChange}
+                    {...form.register('service')}
                   >
                     <option value="" disabled className="bg-gray-900">Select a service</option>
                     <option value="branding" className="bg-gray-900">Brand Design</option>
@@ -185,6 +203,9 @@ export const CTASection: React.FC<CTASectionProps> = ({
                     <option value="print" className="bg-gray-900">Print Design</option>
                     <option value="digital" className="bg-gray-900">Digital Design</option>
                   </select>
+                  {form.formState.errors.service && (
+                    <p className="text-red-400 text-sm">{form.formState.errors.service.message}</p>
+                  )}
                 </div>
                 
                 <div className="space-y-2">
@@ -194,16 +215,21 @@ export const CTASection: React.FC<CTASectionProps> = ({
                     rows={4} 
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors" 
                     placeholder="Tell us about your project..."
-                    value={formData.message}
-                    onChange={handleChange}
+                    {...form.register('message')}
                   ></textarea>
+                  {form.formState.errors.message && (
+                    <p className="text-red-400 text-sm">{form.formState.errors.message.message}</p>
+                  )}
                 </div>
+
+                {/* Honeypot field */}
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
                 
                 <div className="pt-4">
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Sending..." : "Get Started"}
                   </button>
