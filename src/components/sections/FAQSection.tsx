@@ -39,7 +39,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
   supportDescription = "Our team is ready to help bring your vision to life.",
   supportButtonText = "Contact Our Team",
   supportButtonUrl = "#contact",
-  emailTo = "utkarsh.yadav5029@gmail.com", // Default email to send questions to
+  emailTo = "sapphirecreations123@gmail.com", // Default email to send questions to
 }) => {
   const [contactFormOpen, setContactFormOpen] = useState(false);
 

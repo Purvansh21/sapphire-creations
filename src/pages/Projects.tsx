@@ -131,6 +131,7 @@ const Projects = () => {
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover rounded-lg"
+                      onContextMenu={(e) => e.preventDefault()}
                     />
                   </div>
                   <div className="flex-1">

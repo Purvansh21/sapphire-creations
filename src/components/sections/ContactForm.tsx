@@ -35,7 +35,7 @@ interface ContactFormProps {
 export const ContactForm: React.FC<ContactFormProps> = ({ 
   open, 
   onOpenChange,
-  emailTo = "utkarsh.yadav5029@gmail.com",
+  emailTo = "sapphirecreations123@gmail.com",
 }) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);

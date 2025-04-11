@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -127,15 +126,14 @@ const Terms = () => {
               Sapphire Creations reserves the right to modify these Terms at any time. We will notify you of any changes by posting the new Terms on our website. Your continued use of our Services after the posting of changes constitutes your acceptance of such changes.
             </p>
             
-            <h2 className="text-2xl font-semibold mt-8 mb-4">9. Contact Information</h2>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Information</h2>
             <p className="text-white/80 mb-6">
-              If you have any questions about these Terms, please contact us at:
+              If you have any questions about these Terms, please contact us:
             </p>
-            <p className="text-white/80 mb-6">
-              Sapphire Creations<br />
-              Pune, India<br />
-              utkarsh.yadav5029@gmail.com
-            </p>
+            <ul className="list-none mb-6 text-white/80">
+              <li className="mb-2"><strong>Email:</strong> sapphirecreations123@gmail.com</li>
+              <li className="mb-2"><strong>Address:</strong> Pune, India</li>
+            </ul>
             
             <p className="text-white/90 mt-8">
               By using our Services, you acknowledge that you have read, understood, and agreed to these Terms and Conditions.

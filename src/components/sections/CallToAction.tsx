@@ -27,7 +27,7 @@ interface CTASectionProps {
 export const CTASection: React.FC<CTASectionProps> = ({ 
   className, 
   id,
-  emailTo = "utkarsh.yadav5029@gmail.com"
+  emailTo = "sapphirecreations123@gmail.com"
 }) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);

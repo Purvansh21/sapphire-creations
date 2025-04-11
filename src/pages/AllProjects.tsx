@@ -151,6 +151,7 @@ export default function AllProjects() {
                                                 }`}
                                                 onLoad={() => handleImageLoad(project.id)}
                                                 onError={() => handleImageError(project.id)}
+                                                onContextMenu={(e) => e.preventDefault()}
                                             />
                                         )}
                                         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
