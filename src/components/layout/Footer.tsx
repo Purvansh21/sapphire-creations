@@ -104,14 +104,27 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
               </p>
               <div className="flex space-x-3">
                 {[
-                  { icon: <Instagram className="h-4 w-4" />, name: "instagram" },
-                  { icon: <Facebook className="h-4 w-4" />, name: "facebook" },
-                  { icon: <Twitter className="h-4 w-4" />, name: "twitter" },
-                  { icon: <Linkedin className="h-4 w-4" />, name: "linkedin" }
+                  { 
+                    icon: <Instagram className="h-4 w-4" />, 
+                    name: "instagram",
+                    href: "https://www.instagram.com/sapphire.creations67/"
+                  },
+                  { 
+                    icon: <Facebook className="h-4 w-4" />, 
+                    name: "facebook",
+                    href: "https://www.facebook.com/profile.php?id=61569865382923"
+                  },
+                  { 
+                    icon: <Linkedin className="h-4 w-4" />, 
+                    name: "linkedin",
+                    href: "https://www.linkedin.com/company/sapphirecreations"
+                  }
                 ].map((social) => (
                   <a 
                     key={social.name}
-                    href="#" 
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors hover:scale-110 transform duration-200"
                     aria-label={`Follow us on ${social.name}`}
                   >
