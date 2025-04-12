@@ -27,7 +27,7 @@ interface CTASectionProps {
 export const CTASection: React.FC<CTASectionProps> = ({ 
   className, 
   id,
-  emailTo = "sapphirecreations123@gmail.com"
+  emailTo = "info@sapphirecreations.in"
 }) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -80,7 +80,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'c8d8f7eb-39f1-4cf8-b2a7-91adcc976b76',
+          access_key: 'a6568375-c3e6-477b-8d24-914da0b8f99e',
           name: data.name,
           email: data.email,
           message: data.message || 'Newsletter subscription request',

@@ -1,4 +1,6 @@
-# Welcome to Puru's Project
+# Welcome to Sapphire Creations
+
+<!-- Original project by Puru -->
 
 ## Project info
 

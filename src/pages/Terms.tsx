@@ -131,7 +131,7 @@ const Terms = () => {
               If you have any questions about these Terms, please contact us:
             </p>
             <ul className="list-none mb-6 text-white/80">
-              <li className="mb-2"><strong>Email:</strong> sapphirecreations123@gmail.com</li>
+              <li className="mb-2"><strong>Email:</strong> info@sapphirecreations.in</li>
               <li className="mb-2"><strong>Address:</strong> Pune, India</li>
             </ul>
             

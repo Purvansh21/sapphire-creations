@@ -3,7 +3,6 @@ import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/ui/logo';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 interface HeaderProps {
   className?: string;
@@ -120,7 +119,6 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
         </nav>
 
         <div className="hidden md:flex items-center">
-          <ThemeToggle className="mr-3" />
           <button 
             className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full text-sm font-medium transition-all duration-200 hover:scale-105"
             onClick={(e) => handleNavigation('#contact', e)}
@@ -174,9 +172,6 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
           </div>
           
           <div className="pt-6 flex flex-col space-y-3 w-full max-w-xs">
-            <div className="flex justify-center mb-2">
-              <ThemeToggle />
-            </div>
             <button 
               className="w-full px-4 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg"
               onClick={(e) => handleNavigation('#contact', e)}
